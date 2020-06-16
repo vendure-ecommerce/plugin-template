@@ -1,0 +1,25 @@
+{
+  "name": "vendure-plugin-template",
+  "version": "0.0.1",
+  "description": "A Vendure plugin template",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+     "lib/**/*"
+   ],
+  "author": "Michael Bromley <michael@michaelbromley.co.uk>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "watch": "tsc --watch",
+    "build": "rimraf lib && tsc"
+  },
+  "devDependencies": {
+    "@vendure/admin-ui": "^0.13.0",
+    "@vendure/asset-server-plugin": "^0.13.0",
+    "@vendure/core": "^0.13.0",
+    "@vendure/ui-devkit": "^0.13.0",
+    "rimraf": "^3.0.2",
+    "typescript": "^3.9.5"
+  }
+}
