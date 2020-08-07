@@ -1529,7 +1529,7 @@
   dependencies:
     "@types/node" "*"
 
-"@types/node-fetch@2.5.7":
+"@types/node-fetch@2.5.7", "@types/node-fetch@^2.5.4":
   version "2.5.7"
   resolved "https://registry.npmjs.org/@types/node-fetch/-/node-fetch-2.5.7.tgz#20a2afffa882ab04d44ca786449a276f9f6bbf3c"
   integrity sha512-o2WVNf5UhWRkxlf6eq+jMZDu7kjgpgJfl4xVNlvryc95O/6F2ld8ztKX+qu+Rjyet93WAWm5LjeX9H5FGkODvw==
@@ -1608,10 +1608,17 @@
   resolved "https://registry.npmjs.org/@types/zen-observable/-/zen-observable-0.8.0.tgz#8b63ab7f1aa5321248aad5ac890a485656dcea4d"
   integrity sha512-te5lMAWii1uEJ4FwLjzdlbw3+n0FZNOvFXHxQDKeT0dilh7HOzdMzV2TrJVUzq8ep7J4Na8OUYPRLSQkJHAlrg==
 
-"@vendure/admin-ui@^0.13.0":
-  version "0.13.0"
-  resolved "https://registry.npmjs.org/@vendure/admin-ui/-/admin-ui-0.13.0.tgz#bdfb9db970f646dae1d97a38cd2715ff991bcf75"
-  integrity sha512-Kj8k8EehMw+QrIsnYOclU4ApN/GjaHEQdcfqZ27/HI34Lpu258cHIKuqqobNIto2iYI7ah/yeNKPHBJ3ILSnWw==
+"@vendure/admin-ui-plugin@^0.14.0":
+  version "0.14.0"
+  resolved "https://registry.yarnpkg.com/@vendure/admin-ui-plugin/-/admin-ui-plugin-0.14.0.tgz#96a78cd43f9e2708ab69c27abbe9db998fbea1e3"
+  integrity sha512-m5EkHZLLWnbmdGHFuYvbPoQUsblsYi7ZVp/2C8hWyi4WbQ9sIPSgpKNSpPrOUEpDAUE8FCsFmV4W5RYur4vv8A==
+  dependencies:
+    fs-extra "^9.0.0"
+
+"@vendure/admin-ui@^0.14.0":
+  version "0.14.0"
+  resolved "https://registry.yarnpkg.com/@vendure/admin-ui/-/admin-ui-0.14.0.tgz#022e81bee69fb81985d4cdd3c27079918a20ee05"
+  integrity sha512-Gjs2eeiqN8dGdpTty03yDp+2XcZrSJHOhMJVD8xVw3xXfOvL1vHfnreq2nC1Auz8a6GEuOd/Qgf9zoG5N0VNBQ==
   dependencies:
     "@angular/animations" "9.1.7"
     "@angular/cdk" "9.2.3"
@@ -1630,7 +1637,7 @@
     "@ng-select/ng-select" "^3.7.2"
     "@ngx-translate/core" "^12.1.2"
     "@ngx-translate/http-loader" "^4.0.0"
-    "@vendure/common" "^0.13.0"
+    "@vendure/common" "^0.14.0"
     "@webcomponents/custom-elements" "^1.2.4"
     apollo-angular "^1.8.0"
     apollo-cache-inmemory "^1.6.5"
@@ -1659,24 +1666,24 @@
     tslib "^1.10.0"
     zone.js "~0.10.2"
 
-"@vendure/asset-server-plugin@^0.13.0":
-  version "0.13.0"
-  resolved "https://registry.npmjs.org/@vendure/asset-server-plugin/-/asset-server-plugin-0.13.0.tgz#b95357bf5aacf3225017c4482f07b79e097fb2ec"
-  integrity sha512-fzUpcANPtVTPU4IVxoA6CJQ7vPWOTQFLpyPbuzvtiqSM2pAgZqqg2cIaPA6xElolR9tKsqdbCVinnXtgc4T0zQ==
+"@vendure/asset-server-plugin@^0.14.0":
+  version "0.14.0"
+  resolved "https://registry.yarnpkg.com/@vendure/asset-server-plugin/-/asset-server-plugin-0.14.0.tgz#873cfa3c4703a49395180d70aa4ac39d293cfbf9"
+  integrity sha512-dKjQV8m5mnxefmuRD9CRpZ8Mx5yrkDLrhRU+Iz7MWXZ8Ak0l/yARlkOJjIqxuMP/IMJR85LWsFwZehiX0mOhpw==
   dependencies:
     file-type "^14.3.0"
     fs-extra "^9.0.0"
     sharp "0.25.2"
 
-"@vendure/common@^0.13.0":
-  version "0.13.0"
-  resolved "https://registry.npmjs.org/@vendure/common/-/common-0.13.0.tgz#a49108d21db227bcb5429c24bc3de71d46bcf3d2"
-  integrity sha512-mdG0baJCIqFQ+JpZkNFhaLRzPD9JsggCMFAdi4E8R3PEowtXCxJazXut0pjY9/Ak9LxWt3/iHUTDUiFP285wCg==
+"@vendure/common@^0.14.0":
+  version "0.14.0"
+  resolved "https://registry.yarnpkg.com/@vendure/common/-/common-0.14.0.tgz#9c1c515ed93577c1a82a20f00ee3975d625d61a3"
+  integrity sha512-/yDxQ+w8UGstFSUmZWgp8TaYW0maJeqR+YR/A/X6Oi4Y9hNF+wfYuxJQae6eQU0qcogU5oRb75RPm+XEvMyNig==
 
-"@vendure/core@^0.13.0":
-  version "0.13.0"
-  resolved "https://registry.npmjs.org/@vendure/core/-/core-0.13.0.tgz#5ef5c80dbc79805828d3b3bc235ac5430bbd1bc2"
-  integrity sha512-/Dqs0Y9zDQFTKHA7f1u4gEuvpLhy/feldLvpt78YHQe0lQdeB7xANoVGffcSb1QU6eZznhm9nMOvfsLhEFN0qg==
+"@vendure/core@^0.14.0":
+  version "0.14.0"
+  resolved "https://registry.yarnpkg.com/@vendure/core/-/core-0.14.0.tgz#b277e135e2c4c4252dbf8beffbfb55c8788b7db5"
+  integrity sha512-srGzIKne5pWhUpbgA+I0GgeI3xLUP0haIInawhKuKe/tDjlcGPpJwWCQuCe9zY1GMPUWPX3kr94E5ZwpXlBmGA==
   dependencies:
     "@nestjs/common" "7.0.5"
     "@nestjs/core" "7.0.5"
@@ -1687,7 +1694,7 @@
     "@nestjs/testing" "7.0.5"
     "@nestjs/typeorm" "7.0.0"
     "@types/fs-extra" "^8.0.1"
-    "@vendure/common" "^0.13.0"
+    "@vendure/common" "^0.14.0"
     apollo-server-express "2.11.0"
     bcrypt "^4.0.1"
     body-parser "^1.19.0"
@@ -1716,17 +1723,31 @@
     rxjs "^6.3.3"
     typeorm "0.2.24"
 
-"@vendure/ui-devkit@^0.13.0":
-  version "0.13.0"
-  resolved "https://registry.npmjs.org/@vendure/ui-devkit/-/ui-devkit-0.13.0.tgz#1f9b4dd400940ebead61981347f9a875cc47e324"
-  integrity sha512-rfE+ZJyj/LklzDRP8yCKwLM3KL+HP5uGBz27kEg5/m6VdGKViBNSYr6nOcVSTYH9mhbBYBVe7y9MKQCNjIWecA==
+"@vendure/testing@^0.14.0":
+  version "0.14.0"
+  resolved "https://registry.yarnpkg.com/@vendure/testing/-/testing-0.14.0.tgz#ce9cc5f59e064595fca9c03b0a27e16c287b56b4"
+  integrity sha512-ATsqKW1J9NCRb0xuX5UruryESt71DiXJnM86b+CrGeaeph1KIrLbZcYc15mxdBQv87UzxEIGe034ZaUnZlhwTQ==
+  dependencies:
+    "@types/node-fetch" "^2.5.4"
+    "@vendure/common" "^0.14.0"
+    faker "^4.1.0"
+    form-data "^3.0.0"
+    graphql "^14.5.8"
+    graphql-tag "^2.10.1"
+    node-fetch "^2.6.0"
+    sql.js "1.1.0"
+
+"@vendure/ui-devkit@^0.14.0":
+  version "0.14.0"
+  resolved "https://registry.yarnpkg.com/@vendure/ui-devkit/-/ui-devkit-0.14.0.tgz#f827902aada23612009c44c848477b7e59ee9222"
+  integrity sha512-aI9YxBa7UP1Lv8yVy5wiJZ02xieHeruFoDQ+amu8DZxzkJ63IpCht+obppqmOirDswbFh21e73k/ADwe97R7bw==
   dependencies:
     "@angular-devkit/build-angular" "~0.900.5"
     "@angular/cli" "^9.0.5"
     "@angular/compiler" "^9.0.6"
     "@angular/compiler-cli" "^9.0.6"
-    "@vendure/admin-ui" "^0.13.0"
-    "@vendure/common" "^0.13.0"
+    "@vendure/admin-ui" "^0.14.0"
+    "@vendure/common" "^0.14.0"
     chalk "^3.0.0"
     chokidar "^3.3.1"
     fs-extra "^9.0.0"
@@ -2403,6 +2424,11 @@ are-we-there-yet@~1.1.2:
     delegates "^1.0.0"
     readable-stream "^2.0.6"
 
+arg@^4.1.0:
+  version "4.1.3"
+  resolved "https://registry.yarnpkg.com/arg/-/arg-4.1.3.tgz#269fc7ad5b8e42cb63c896d5666017261c144089"
+  integrity sha512-58S9QDqG0Xx27YwPSt9fJxivjYl432YCwfDMfZ+71RAqUrZef7LrKQZ3LHLOwCS4FLNBplP533Zx895SeOCHvA==
+
 argparse@^1.0.7:
   version "1.0.10"
   resolved "https://registry.npmjs.org/argparse/-/argparse-1.0.10.tgz#bcd6791ea5ae09725e17e5ad988134cd40b3d911"
@@ -2835,6 +2861,11 @@ buffer-indexof@^1.0.0:
   version "1.1.1"
   resolved "https://registry.npmjs.org/buffer-indexof/-/buffer-indexof-1.1.1.tgz#52fabcc6a606d1a00302802648ef68f639da268c"
   integrity sha512-4/rOEg86jivtPTeOUUT61jJO1Ya1TrR/OkqCSZDyq84WJh3LuuiphBYJN+fm5xufIk4XAFcEwte/8WzC8If/1g==
+
+buffer-writer@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/buffer-writer/-/buffer-writer-2.0.0.tgz#ce7eb81a38f7829db09c873f2fbb792c0c98ec04"
+  integrity sha512-a7ZpuTZU1TRtnwyCNW3I5dc0wWNC3VR9S++Ewyk2HHZdrO3CQJqSpd+95Us590V6AL7JqUAH2IwZ/398PmNFgw==
 
 buffer-xor@^1.0.3:
   version "1.0.3"
@@ -4002,6 +4033,11 @@ dicer@0.3.0:
   dependencies:
     streamsearch "0.1.2"
 
+diff@^4.0.1:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/diff/-/diff-4.0.2.tgz#60f3aecb89d5fae520c11aa19efc2bb982aade7d"
+  integrity sha512-58lmxKSA4BNyLz+HHMUzlOEpg09FV+ev6ZMe3vJihgdxzgcwZ8VoEEPmALCZG9LmqfVoNMMKpttIYTVG6uDY7A==
+
 diffie-hellman@^5.0.0:
   version "5.0.3"
   resolved "https://registry.npmjs.org/diffie-hellman/-/diffie-hellman-5.0.3.tgz#40e8ee98f55a2149607146921c63e1ae5f3d2875"
@@ -4493,6 +4529,11 @@ extsprintf@^1.2.0:
   version "1.4.0"
   resolved "https://registry.npmjs.org/extsprintf/-/extsprintf-1.4.0.tgz#e2689f8f356fad62cca65a3a91c5df5f9551692f"
   integrity sha1-4mifjzVvrWLMplo6kcXfX5VRaS8=
+
+faker@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/faker/-/faker-4.1.0.tgz#1e45bbbecc6774b3c195fad2835109c6d748cc3f"
+  integrity sha1-HkW7vsxndLPBlfrSg1EJxtdIzD8=
 
 fast-deep-equal@^2.0.1:
   version "2.0.1"
@@ -5011,6 +5052,11 @@ graphql-tag@^2.10.0, graphql-tag@^2.10.3, graphql-tag@^2.9.2:
   resolved "https://registry.npmjs.org/graphql-tag/-/graphql-tag-2.10.3.tgz#ea1baba5eb8fc6339e4c4cf049dabe522b0edf03"
   integrity sha512-4FOv3ZKfA4WdOKJeHdz6B3F/vxBLSgmBcGeAFPf4n1F64ltJUvOOerNj0rsJxONQGdhUMynQIvd6LzB+1J5oKA==
 
+graphql-tag@^2.10.1:
+  version "2.11.0"
+  resolved "https://registry.yarnpkg.com/graphql-tag/-/graphql-tag-2.11.0.tgz#1deb53a01c46a7eb401d6cb59dec86fa1cccbffd"
+  integrity sha512-VmsD5pJqWJnQZMUeRwrDhfgoyqcfwEkvtpANqcoUG8/tOLkwNgU9mzub/Mc78OJMhHjx7gfAMTxzdG43VGg3bA==
+
 graphql-tools@4.0.7:
   version "4.0.7"
   resolved "https://registry.npmjs.org/graphql-tools/-/graphql-tools-4.0.7.tgz#743309b96cb657ff45b607ee0a07193cd987e43c"
@@ -5052,6 +5098,13 @@ graphql@14.6.0, graphql@^14.5.3, graphql@^14.6.0:
   version "14.6.0"
   resolved "https://registry.npmjs.org/graphql/-/graphql-14.6.0.tgz#57822297111e874ea12f5cd4419616930cd83e49"
   integrity sha512-VKzfvHEKybTKjQVpTFrA5yUq2S9ihcZvfJAtsDBBCuV6wauPu1xl/f9ehgVf0FcEJJs4vz6ysb/ZMkGigQZseg==
+  dependencies:
+    iterall "^1.2.2"
+
+graphql@^14.5.8:
+  version "14.7.0"
+  resolved "https://registry.yarnpkg.com/graphql/-/graphql-14.7.0.tgz#7fa79a80a69be4a31c27dda824dc04dac2035a72"
+  integrity sha512-l0xWZpoPKpppFzMfvVyFmp9vLN7w/ZZJPefUicMCepfJeQ8sMcztloGYY9DfjVPo6tIUDzU5Hw3MUbIjj9AVVA==
   dependencies:
     iterall "^1.2.2"
 
@@ -6334,6 +6387,11 @@ make-dir@^3.0.0, make-dir@^3.0.2:
   dependencies:
     semver "^6.0.0"
 
+make-error@^1.1.1:
+  version "1.3.6"
+  resolved "https://registry.yarnpkg.com/make-error/-/make-error-1.3.6.tgz#2eb2e37ea9b67c4891f684a1394799af484cf7a2"
+  integrity sha512-s8UhlNe7vPKomQhC1qFelMokr/Sc3AgNbso3n74mVPA5LTZwkB9NlXf4XPamLxJE8h0gh73rM94xvwRT2CVInw==
+
 make-fetch-happen@^5.0.0:
   version "5.0.2"
   resolved "https://registry.npmjs.org/make-fetch-happen/-/make-fetch-happen-5.0.2.tgz#aa8387104f2687edca01c8687ee45013d02d19bd"
@@ -6907,7 +6965,7 @@ node-fetch-npm@^2.0.2:
     json-parse-better-errors "^1.0.0"
     safe-buffer "^5.1.1"
 
-node-fetch@^2.1.2, node-fetch@^2.2.0, node-fetch@^2.3.0:
+node-fetch@^2.1.2, node-fetch@^2.2.0, node-fetch@^2.3.0, node-fetch@^2.6.0:
   version "2.6.0"
   resolved "https://registry.npmjs.org/node-fetch/-/node-fetch-2.6.0.tgz#e633456386d4aa55863f676a7ab0daa8fdecb0fd"
   integrity sha512-8dG4H5ujfvFiqDmVu9fQ5bOHUC15JMjMY/Zumv26oOvvVJjM67KF8koCWIabKQ1GJIa9r2mMZscBq/TbdOcmNA==
@@ -7425,6 +7483,11 @@ p-try@^2.0.0:
   resolved "https://registry.npmjs.org/p-try/-/p-try-2.2.0.tgz#cb2868540e313d61de58fafbe35ce9004d5540e6"
   integrity sha512-R4nPAVTAU0B9D35/Gk3uJf/7XYbQcyohSKdvAxIRSNghFl4e71hVoGnBNQz9cWaXxO2I10KTC+3jMdvvoKw6dQ==
 
+packet-reader@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/packet-reader/-/packet-reader-1.0.0.tgz#9238e5480dedabacfe1fe3f2771063f164157d74"
+  integrity sha512-HAKu/fG3HpHFO0AA8WE8q2g+gBJaZ9MG7fcKk+IJPLTGAD6Psw4443l+9DGRbOIh3/aXr7Phy0TjilYivJo5XQ==
+
 pacote@9.5.12:
   version "9.5.12"
   resolved "https://registry.npmjs.org/pacote/-/pacote-9.5.12.tgz#1e11dd7a8d736bcc36b375a9804d41bb0377bf66"
@@ -7609,6 +7672,58 @@ performance-now@^2.1.0:
   version "2.1.0"
   resolved "https://registry.npmjs.org/performance-now/-/performance-now-2.1.0.tgz#6309f4e0e5fa913ec1c69307ae364b4b377c9e7b"
   integrity sha1-Ywn04OX6kT7BxpMHrjZLSzd8nns=
+
+pg-connection-string@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/pg-connection-string/-/pg-connection-string-2.3.0.tgz#c13fcb84c298d0bfa9ba12b40dd6c23d946f55d6"
+  integrity sha512-ukMTJXLI7/hZIwTW7hGMZJ0Lj0S2XQBCJ4Shv4y1zgQ/vqVea+FLhzywvPj0ujSuofu+yA4MYHGZPTsgjBgJ+w==
+
+pg-int8@1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/pg-int8/-/pg-int8-1.0.1.tgz#943bd463bf5b71b4170115f80f8efc9a0c0eb78c"
+  integrity sha512-WCtabS6t3c8SkpDBUlb1kjOs7l66xsGdKpIPZsg4wR+B3+u9UAum2odSsF9tnvxg80h4ZxLWMy4pRjOsFIqQpw==
+
+pg-pool@^3.2.1:
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/pg-pool/-/pg-pool-3.2.1.tgz#5f4afc0f58063659aeefa952d36af49fa28b30e0"
+  integrity sha512-BQDPWUeKenVrMMDN9opfns/kZo4lxmSWhIqo+cSAF7+lfi9ZclQbr9vfnlNaPr8wYF3UYjm5X0yPAhbcgqNOdA==
+
+pg-protocol@^1.2.5:
+  version "1.2.5"
+  resolved "https://registry.yarnpkg.com/pg-protocol/-/pg-protocol-1.2.5.tgz#28a1492cde11646ff2d2d06bdee42a3ba05f126c"
+  integrity sha512-1uYCckkuTfzz/FCefvavRywkowa6M5FohNMF5OjKrqo9PSR8gYc8poVmwwYQaBxhmQdBjhtP514eXy9/Us2xKg==
+
+pg-types@^2.1.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/pg-types/-/pg-types-2.2.0.tgz#2d0250d636454f7cfa3b6ae0382fdfa8063254a3"
+  integrity sha512-qTAAlrEsl8s4OiEQY69wDvcMIdQN6wdz5ojQiOy6YRMuynxenON0O5oCpJI6lshc6scgAY8qvJ2On/p+CXY0GA==
+  dependencies:
+    pg-int8 "1.0.1"
+    postgres-array "~2.0.0"
+    postgres-bytea "~1.0.0"
+    postgres-date "~1.0.4"
+    postgres-interval "^1.1.0"
+
+pg@^8.3.0:
+  version "8.3.0"
+  resolved "https://registry.yarnpkg.com/pg/-/pg-8.3.0.tgz#941383300d38eef51ecb88a0188cec441ab64d81"
+  integrity sha512-jQPKWHWxbI09s/Z9aUvoTbvGgoj98AU7FDCcQ7kdejupn/TcNpx56v2gaOTzXkzOajmOEJEdi9eTh9cA2RVAjQ==
+  dependencies:
+    buffer-writer "2.0.0"
+    packet-reader "1.0.0"
+    pg-connection-string "^2.3.0"
+    pg-pool "^3.2.1"
+    pg-protocol "^1.2.5"
+    pg-types "^2.1.0"
+    pgpass "1.x"
+    semver "4.3.2"
+
+pgpass@1.x:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/pgpass/-/pgpass-1.0.2.tgz#2a7bb41b6065b67907e91da1b07c1847c877b306"
+  integrity sha1-Knu0G2BltnkH6R2hsHwYR8h3swY=
+  dependencies:
+    split "^1.0.0"
 
 picomatch@^2.0.4, picomatch@^2.0.5, picomatch@^2.0.7, picomatch@^2.2.1:
   version "2.2.2"
@@ -7997,6 +8112,28 @@ postcss@^7.0.0, postcss@^7.0.1, postcss@^7.0.21, postcss@^7.0.27:
     chalk "^2.4.2"
     source-map "^0.6.1"
     supports-color "^6.1.0"
+
+postgres-array@~2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/postgres-array/-/postgres-array-2.0.0.tgz#48f8fce054fbc69671999329b8834b772652d82e"
+  integrity sha512-VpZrUqU5A69eQyW2c5CA1jtLecCsN2U/bD6VilrFDWq5+5UIEVO7nazS3TEcHf1zuPYO/sqGvUvW62g86RXZuA==
+
+postgres-bytea@~1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/postgres-bytea/-/postgres-bytea-1.0.0.tgz#027b533c0aa890e26d172d47cf9ccecc521acd35"
+  integrity sha1-AntTPAqokOJtFy1Hz5zOzFIazTU=
+
+postgres-date@~1.0.4:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/postgres-date/-/postgres-date-1.0.6.tgz#4925e8085b30c2ba1a06ac91b9a3473954a2ce2d"
+  integrity sha512-o2a4gxeFcox+CgB3Ig/kNHBP23PiEXHCXx7pcIIsvzoNz4qv+lKTyiSkjOXIMNUl12MO/mOYl2K6wR9X5K6Plg==
+
+postgres-interval@^1.1.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/postgres-interval/-/postgres-interval-1.2.0.tgz#b460c82cb1587507788819a06aa0fffdb3544695"
+  integrity sha512-9ZhXKM/rw350N1ovuWHbGxnGh/SNJ4cnxHiM0rxE4VN41wsg8P8zWn9hv/buK00RP4WvlOyr/RBDiptyxVbkZQ==
+  dependencies:
+    xtend "^4.0.0"
 
 prebuild-install@^5.3.3:
   version "5.3.4"
@@ -8832,6 +8969,11 @@ semver-intersect@1.4.0:
   resolved "https://registry.npmjs.org/semver/-/semver-5.7.1.tgz#a954f931aeba508d307bbf069eff0c01c96116f7"
   integrity sha512-sauaDf/PZdVgrLTNYHRtpXa1iRiKcaebiKQ1BJdpQlWH2lCvexQdX55snPFyK7QzpudqbCI0qXFfOasHdyNDGQ==
 
+semver@4.3.2:
+  version "4.3.2"
+  resolved "https://registry.yarnpkg.com/semver/-/semver-4.3.2.tgz#c7a07158a80bedd052355b770d82d6640f803be7"
+  integrity sha1-x6BxWKgL7dBSNVt3DYLWZA+AO+c=
+
 semver@6.3.0, semver@^6.0.0, semver@^6.3.0:
   version "6.3.0"
   resolved "https://registry.npmjs.org/semver/-/semver-6.3.0.tgz#ee0a64c8af5e8ceea67687b133761e1becbd1d3d"
@@ -9124,7 +9266,7 @@ source-map-support@0.5.16:
     buffer-from "^1.0.0"
     source-map "^0.6.0"
 
-source-map-support@^0.5.5, source-map-support@~0.5.12:
+source-map-support@^0.5.17, source-map-support@^0.5.5, source-map-support@~0.5.12:
   version "0.5.19"
   resolved "https://registry.npmjs.org/source-map-support/-/source-map-support-0.5.19.tgz#a98b62f86dcaf4f67399648c085291ab9e8fed61"
   integrity sha512-Wonm7zOCIJzBGQdB+thsPar0kYuCIzYvxZwlBa87yi/Mdjv7Tip2cyVbLj5o0cFPN4EVkuTwb3GDDyUx2DGnGw==
@@ -9220,10 +9362,22 @@ split-string@^3.0.1, split-string@^3.0.2:
   dependencies:
     extend-shallow "^3.0.0"
 
+split@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/split/-/split-1.0.1.tgz#605bd9be303aa59fb35f9229fbea0ddec9ea07d9"
+  integrity sha512-mTyOoPbrivtXnwnIxZRFYRrPNtEFKlpB2fvjSnCQUiAA6qAZzqwna5envK4uk6OIeP17CsdF3rSBGYVBsU0Tkg==
+  dependencies:
+    through "2"
+
 sprintf-js@~1.0.2:
   version "1.0.3"
   resolved "https://registry.npmjs.org/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
   integrity sha1-BOaSb2YolTVPPdAVIDYzuFcpfiw=
+
+sql.js@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/sql.js/-/sql.js-1.1.0.tgz#dc49b8da24f7543faa237df3b5ed8dbcbab84b08"
+  integrity sha512-UQHbTDtXiL0HvWq5PkPyomkv/zhxcWKLeG/hkRFH65dmbfDvKolC0u96VdZUSOHA9om6w0cbJQ5Cv7K2M6xnwA==
 
 sshpk@^1.7.0:
   version "1.16.1"
@@ -9655,7 +9809,7 @@ through2@^2.0.0:
     readable-stream "~2.3.6"
     xtend "~4.0.1"
 
-"through@>=2.2.7 <3", through@^2.3.6:
+through@2, "through@>=2.2.7 <3", through@^2.3.6:
   version "2.3.8"
   resolved "https://registry.npmjs.org/through/-/through-2.3.8.tgz#0dd4c9ffaabc357960b1b724115d7e0e86a2e1f5"
   integrity sha1-DdTJ/6q8NXlgsbckEV1+Doai4fU=
@@ -9775,6 +9929,17 @@ ts-morph@^7.0.0:
     "@dsherret/to-absolute-glob" "^2.0.2"
     "@ts-morph/common" "~0.5.0"
     code-block-writer "^10.1.0"
+
+ts-node@^8.10.2:
+  version "8.10.2"
+  resolved "https://registry.yarnpkg.com/ts-node/-/ts-node-8.10.2.tgz#eee03764633b1234ddd37f8db9ec10b75ec7fb8d"
+  integrity sha512-ISJJGgkIpDdBhWVu3jufsWpK3Rzo7bdiIXJjQc0ynKxVOVcg2oIrf2H2cejminGrptVc6q6/uynAHNCuWGbpVA==
+  dependencies:
+    arg "^4.1.0"
+    diff "^4.0.1"
+    make-error "^1.1.1"
+    source-map-support "^0.5.17"
+    yn "3.1.1"
 
 tslib@1.10.0:
   version "1.10.0"
@@ -10507,6 +10672,11 @@ yargs@^15.0.0:
     which-module "^2.0.0"
     y18n "^4.0.0"
     yargs-parser "^18.1.1"
+
+yn@3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/yn/-/yn-3.1.1.tgz#1e87401a09d767c1d5eab26a6e4c185182d2eb50"
+  integrity sha512-Ux4ygGWsu2c7isFWe8Yu1YluJmqVhxqK2cLXNQA5AcC3QfbGNpM7fu0Y8b/z16pXLnFxZYvWhd3fhBY9DLmC6Q==
 
 zen-observable-ts@^0.8.21:
   version "0.8.21"

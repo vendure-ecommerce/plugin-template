@@ -5,21 +5,33 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
-     "lib/**/*"
-   ],
+    "lib/**/*"
+  ],
   "author": "Michael Bromley <michael@michaelbromley.co.uk>",
   "license": "MIT",
   "private": false,
   "scripts": {
     "watch": "tsc --watch",
-    "build": "rimraf lib && tsc"
+    "build": "rimraf lib && tsc",
+    "dev:run": "docker-compose -f dev-server/docker-compose.yml up",
+    "dev:restart": "docker-compose -f dev-server/docker-compose.yml restart server",
+    "dev:build": "docker-compose -f dev-server/docker-compose.yml build",
+    "dev:db:start": "docker-compose -f dev-server/docker-compose.yml up -d database",
+    "dev:db:stop": "docker-compose -f dev-server/docker-compose.yml stop database",
+    "dev:populate": "yarn dev:db:start && ts-node ./dev-server/populate.ts && yarn dev:db:stop",
+    "dev:run:server": "ts-node ./dev-server/index.ts",
+    "dev:run:worker": "ts-node ./dev-server/index-worker.ts"
   },
   "devDependencies": {
-    "@vendure/admin-ui": "^0.13.0",
-    "@vendure/asset-server-plugin": "^0.13.0",
-    "@vendure/core": "^0.13.0",
-    "@vendure/ui-devkit": "^0.13.0",
+    "@vendure/admin-ui": "^0.14.0",
+    "@vendure/admin-ui-plugin": "^0.14.0",
+    "@vendure/asset-server-plugin": "^0.14.0",
+    "@vendure/core": "^0.14.0",
+    "@vendure/testing": "^0.14.0",
+    "@vendure/ui-devkit": "^0.14.0",
+    "pg": "^8.3.0",
     "rimraf": "^3.0.2",
+    "ts-node": "^8.10.2",
     "typescript": "^3.9.5"
   }
 }
