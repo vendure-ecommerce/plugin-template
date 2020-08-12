@@ -3,8 +3,9 @@ import { PluginInitOptions } from './types';
 import { PLUGIN_INIT_OPTIONS } from './constants';
 import { ExampleEntity } from './entities/example.entity';
 import { ExampleService } from './service/example.service';
-import { shopApiExtensions } from './api/api-extensions';
+import { shopApiExtensions, adminApiExtensions } from './api/api-extensions';
 import { ExampleResolver } from './api/example.resolver';
+import { ExampleAdminResolver } from './api/example-admin.resolver';
 
 /**
  * An example Vendure plugin.
@@ -26,6 +27,10 @@ import { ExampleResolver } from './api/example.resolver';
     // access to the Vendure core providers. See https://www.vendure.io/docs/typescript-api/plugin/plugin-common-module/
     imports: [PluginCommonModule],
     entities: [ExampleEntity],
+    adminApiExtensions: {
+        schema: adminApiExtensions,
+        resolvers: [ExampleResolver, ExampleAdminResolver],
+    },
     shopApiExtensions: {
         schema: shopApiExtensions,
         resolvers: [ExampleResolver],
