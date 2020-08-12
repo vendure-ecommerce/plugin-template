@@ -6,11 +6,17 @@ It is intended for plugins which are to be **distributed as npm packages**, eith
 
 Further information on how Vendure plugins can be used can be found in the [vendure.io Plugins documentation](https://www.vendure.io/docs/plugins/).
 
+## e2e Testing
+
+See `src/e2e` for details, run tests with:
+
+```bash
+yarn test
+```
+
 ## TODO
 
 This template could be made more complete by including:
-
-* Example e2e test setup
 * Example Admin UI extension
 * Code generation for resolvers & e2e tests
 * ESLint / Prettier
