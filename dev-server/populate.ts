@@ -3,11 +3,11 @@ import { populate } from '@vendure/core/cli';
 import { clearAllTables, populateCustomers } from '@vendure/testing';
 import path from 'path';
 
-import { initialData } from './mock-data/data-sources/initial-data';
-
 import { headlessConfig } from './vendure-config';
 
 // tslint:disable:no-console
+
+const initialData = require(path.join(require.resolve('@vendure/create'), '../assets/initial-data.json'));
 
 /**
  * A CLI script which populates the dev database with deterministic random data.
@@ -22,7 +22,7 @@ if (require.main === module) {
                 requireVerification: false,
             },
             importExportOptions: {
-                importAssetsDir: path.join(__dirname, './mock-data/assets'),
+                importAssetsDir: path.join(require.resolve('@vendure/create'), '../assets/images')
             },
             workerOptions: {
                 runInMainProcess: true,
@@ -35,7 +35,7 @@ if (require.main === module) {
             populate(
                 () => bootstrap(populateConfig),
                 initialData,
-                path.join(__dirname, './mock-data/data-sources/products.csv'),
+                path.join(require.resolve('@vendure/create'), '../assets/products.csv'),
             ),
         )
         .then(async app => {

@@ -27,6 +27,7 @@
     "@vendure/admin-ui-plugin": "^0.14.0",
     "@vendure/asset-server-plugin": "^0.14.0",
     "@vendure/core": "^0.14.0",
+    "@vendure/create": "^0.14.0",
     "@vendure/testing": "^0.14.0",
     "@vendure/ui-devkit": "^0.14.0",
     "pg": "^8.3.0",
