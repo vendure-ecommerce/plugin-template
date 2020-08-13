@@ -15,4 +15,12 @@ export class ExampleService {
     getAllItems() {
         return this.connection.getRepository(ExampleEntity).find();
     }
+
+    addItem(name: string) {
+        const repository = this.connection.getRepository(ExampleEntity);
+        const example = repository.create({ name });
+        repository.save(example);
+        
+        return example;
+    }
 }

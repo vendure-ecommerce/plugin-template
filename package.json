@@ -20,7 +20,9 @@
     "dev:db:stop": "docker-compose -f dev-server/docker-compose.yml stop database",
     "dev:populate": "yarn dev:db:start && ts-node ./dev-server/populate.ts && yarn dev:db:stop",
     "dev:run:server": "ts-node ./dev-server/index.ts",
-    "dev:run:worker": "ts-node ./dev-server/index-worker.ts"
+    "dev:run:worker": "ts-node ./dev-server/index-worker.ts",
+    "test": "yarn test:e2e",
+    "test:e2e": "jest --config src/e2e/config/jest-config.js"
   },
   "devDependencies": {
     "@vendure/admin-ui": "^0.14.0",
@@ -32,6 +34,9 @@
     "@vendure/ui-devkit": "^0.14.0",
     "pg": "^8.3.0",
     "rimraf": "^3.0.2",
+    "jest": "^26.2.2",
+    "ts-jest": "^26.1.4",
+    "@types/jest": "^26.0.9",
     "ts-node": "^8.10.2",
     "typescript": "^3.9.5"
   }
