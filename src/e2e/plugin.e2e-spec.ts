@@ -48,26 +48,23 @@ describe('example plugin', () => {
         });
 
         it('returns examples', async () => {
-            const { examples } = await adminClient.query<GetExamples.Query, GetExamples.Variables>(
-                GET_EXAMPLES,
-            );
+            const {
+                examples: { items, totalItems },
+            } = await shopClient.query<GetExamples.Query, GetExamples.Variables>(GET_EXAMPLES);
 
-            expect(examples).toHaveLength(1);
-            expect(examples[0].name).toEqual(exampleName);
+            expect(totalItems).toEqual(1);
+            expect(items[0].name).toEqual(exampleName);
         });
     });
 
     describe('shop api', () => {
         it('returns examples', async () => {
-            const { examples } = await shopClient.query<
-                // GetExamples.Query,
-                // GetExamples.Variables
-                any,
-                any
-            >(GET_EXAMPLES);
+            const {
+                examples: { items, totalItems },
+            } = await shopClient.query<GetExamples.Query, GetExamples.Variables>(GET_EXAMPLES);
 
-            expect(examples).toHaveLength(1);
-            expect(examples[0].name).toEqual(exampleName);
+            expect(totalItems).toEqual(1);
+            expect(items[0].name).toEqual(exampleName);
         });
     });
 });

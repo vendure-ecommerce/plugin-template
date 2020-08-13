@@ -810,6 +810,32 @@ export type Example = Node & {
   name: Scalars['String'];
 };
 
+export type ExampleFilterParameter = {
+  createdAt?: Maybe<DateOperators>;
+  updatedAt?: Maybe<DateOperators>;
+  name?: Maybe<StringOperators>;
+};
+
+export type ExampleList = PaginatedList & {
+  __typename?: 'ExampleList';
+  items: Array<Example>;
+  totalItems: Scalars['Int'];
+};
+
+export type ExampleListOptions = {
+  skip?: Maybe<Scalars['Int']>;
+  take?: Maybe<Scalars['Int']>;
+  sort?: Maybe<ExampleSortParameter>;
+  filter?: Maybe<ExampleFilterParameter>;
+};
+
+export type ExampleSortParameter = {
+  id?: Maybe<SortOrder>;
+  createdAt?: Maybe<SortOrder>;
+  updatedAt?: Maybe<SortOrder>;
+  name?: Maybe<SortOrder>;
+};
+
 export type Facet = Node & {
   __typename?: 'Facet';
   id: Scalars['ID'];
@@ -2068,7 +2094,7 @@ export type Query = {
   products: ProductList;
   /** Search Products based on the criteria set by the `SearchInput` */
   search: SearchResponse;
-  examples: Array<Example>;
+  examples: ExampleList;
 };
 
 
@@ -2106,6 +2132,11 @@ export type QueryProductsArgs = {
 
 export type QuerySearchArgs = {
   input: SearchInput;
+};
+
+
+export type QueryExamplesArgs = {
+  options?: Maybe<ExampleListOptions>;
 };
 
 export type Refund = Node & {
@@ -2421,7 +2452,8 @@ export type Zone = Node & {
 export namespace GetExamples {
   export type Variables = GetExamplesQueryVariables;
   export type Query = GetExamplesQuery;
-  export type Examples = (NonNullable<GetExamplesQuery['examples'][0]>);
+  export type Examples = GetExamplesQuery['examples'];
+  export type Items = (NonNullable<GetExamplesQuery['examples']['items'][0]>);
 }
 
 export type GetExamplesQueryVariables = Exact<{ [key: string]: never; }>;
@@ -2429,8 +2461,12 @@ export type GetExamplesQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetExamplesQuery = (
   { __typename?: 'Query' }
-  & { examples: Array<(
-    { __typename?: 'Example' }
-    & Pick<Example, 'id' | 'name'>
-  )> }
+  & { examples: (
+    { __typename?: 'ExampleList' }
+    & Pick<ExampleList, 'totalItems'>
+    & { items: Array<(
+      { __typename?: 'Example' }
+      & Pick<Example, 'name'>
+    )> }
+  ) }
 );

@@ -8,9 +8,17 @@ export const commonApiExtensions = gql`
         name: String!
     }
 
-    extend type Query {
-        examples: [Example!]!
+    type ExampleList implements PaginatedList {
+        items: [Example!]!
+        totalItems: Int!
     }
+
+    extend type Query {
+        examples(options: ExampleListOptions): ExampleList!
+    }
+
+    # Auto-generated at runtime
+    input ExampleListOptions
 `;
 
 export const shopApiExtensions = gql`

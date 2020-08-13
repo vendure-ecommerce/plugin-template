@@ -810,6 +810,32 @@ export type Example = Node & {
   name: Scalars['String'];
 };
 
+export type ExampleFilterParameter = {
+  createdAt?: Maybe<DateOperators>;
+  updatedAt?: Maybe<DateOperators>;
+  name?: Maybe<StringOperators>;
+};
+
+export type ExampleList = PaginatedList & {
+  __typename?: 'ExampleList';
+  items: Array<Example>;
+  totalItems: Scalars['Int'];
+};
+
+export type ExampleListOptions = {
+  skip?: Maybe<Scalars['Int']>;
+  take?: Maybe<Scalars['Int']>;
+  sort?: Maybe<ExampleSortParameter>;
+  filter?: Maybe<ExampleFilterParameter>;
+};
+
+export type ExampleSortParameter = {
+  id?: Maybe<SortOrder>;
+  createdAt?: Maybe<SortOrder>;
+  updatedAt?: Maybe<SortOrder>;
+  name?: Maybe<SortOrder>;
+};
+
 export type Facet = Node & {
   __typename?: 'Facet';
   id: Scalars['ID'];
@@ -2068,7 +2094,7 @@ export type Query = {
   products: ProductList;
   /** Search Products based on the criteria set by the `SearchInput` */
   search: SearchResponse;
-  examples: Array<Example>;
+  examples: ExampleList;
 };
 
 
@@ -2106,6 +2132,11 @@ export type QueryProductsArgs = {
 
 export type QuerySearchArgs = {
   input: SearchInput;
+};
+
+
+export type QueryExamplesArgs = {
+  options?: Maybe<ExampleListOptions>;
 };
 
 export type Refund = Node & {

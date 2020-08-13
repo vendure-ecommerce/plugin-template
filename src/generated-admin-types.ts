@@ -1126,6 +1126,32 @@ export type Example = Node & {
   name: Scalars['String'];
 };
 
+export type ExampleFilterParameter = {
+  createdAt?: Maybe<DateOperators>;
+  updatedAt?: Maybe<DateOperators>;
+  name?: Maybe<StringOperators>;
+};
+
+export type ExampleList = PaginatedList & {
+  __typename?: 'ExampleList';
+  items: Array<Example>;
+  totalItems: Scalars['Int'];
+};
+
+export type ExampleListOptions = {
+  skip?: Maybe<Scalars['Int']>;
+  take?: Maybe<Scalars['Int']>;
+  sort?: Maybe<ExampleSortParameter>;
+  filter?: Maybe<ExampleFilterParameter>;
+};
+
+export type ExampleSortParameter = {
+  id?: Maybe<SortOrder>;
+  createdAt?: Maybe<SortOrder>;
+  updatedAt?: Maybe<SortOrder>;
+  name?: Maybe<SortOrder>;
+};
+
 export type Facet = Node & {
   __typename?: 'Facet';
   isPrivate: Scalars['Boolean'];
@@ -3004,7 +3030,7 @@ export type Query = {
   taxRate?: Maybe<TaxRate>;
   zones: Array<Zone>;
   zone?: Maybe<Zone>;
-  examples: Array<Example>;
+  examples: ExampleList;
 };
 
 
@@ -3202,6 +3228,11 @@ export type QueryTaxRateArgs = {
 
 export type QueryZoneArgs = {
   id: Scalars['ID'];
+};
+
+
+export type QueryExamplesArgs = {
+  options?: Maybe<ExampleListOptions>;
 };
 
 export type Refund = Node & {

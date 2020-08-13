@@ -5,16 +5,25 @@ import { Connection } from 'typeorm';
 import { ExampleEntity } from '../entities/example.entity';
 import { PLUGIN_INIT_OPTIONS } from '../constants';
 import { PluginInitOptions } from '../types';
+import { ListQueryBuilder, PaginatedList } from '@vendure/core';
+import { ExampleListOptions } from '../generated-admin-types';
 
 @Injectable()
 export class ExampleService {
     constructor(
         @InjectConnection() private connection: Connection,
         @Inject(PLUGIN_INIT_OPTIONS) private options: PluginInitOptions,
+        private listQueryBuilder: ListQueryBuilder,
     ) {}
 
-    async getAllItems(): Promise<ExampleEntity[]> {
-        return this.connection.getRepository(ExampleEntity).find();
+    async getAllItems(options?: ExampleListOptions): Promise<PaginatedList<ExampleEntity>> {
+        return this.listQueryBuilder
+            .build(ExampleEntity, options)
+            .getManyAndCount()
+            .then(([items, totalItems]) => ({
+                items,
+                totalItems,
+            }));
     }
 
     async addItem(name: string): Promise<ExampleEntity> {
