@@ -23,4 +23,4 @@ export const adminApiExtensions = gql`
     extend type Mutation {
         addExample(name: String!): Example!
     }
-`
+`;

@@ -8,7 +8,6 @@ import { VendureEntity, DeepPartial } from '@vendure/core';
  */
 @Entity()
 export class ExampleEntity extends VendureEntity {
-
     constructor(input?: DeepPartial<ExampleEntity>) {
         super(input);
     }

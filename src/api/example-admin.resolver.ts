@@ -1,6 +1,8 @@
 import { Args, Mutation, Resolver } from '@nestjs/graphql';
 import { ExampleService } from '../service/example.service';
-import { RequestContext, Ctx, Permission, Allow } from '@vendure/core';
+import { Permission, Allow } from '@vendure/core';
+import { ExampleEntity } from '../entities/example.entity';
+import { MutationAddExampleArgs } from '../generated-admin-types';
 
 @Resolver()
 export class ExampleAdminResolver {
@@ -8,7 +10,7 @@ export class ExampleAdminResolver {
 
     @Mutation()
     @Allow(Permission.SuperAdmin)
-    async addExample(@Ctx() ctx: RequestContext, @Args() args: any) {
+    addExample(@Args() args: MutationAddExampleArgs): Promise<ExampleEntity> {
         return this.exampleService.addItem(args.name);
     }
 }

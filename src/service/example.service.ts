@@ -8,19 +8,20 @@ import { PluginInitOptions } from '../types';
 
 @Injectable()
 export class ExampleService {
+    constructor(
+        @InjectConnection() private connection: Connection,
+        @Inject(PLUGIN_INIT_OPTIONS) private options: PluginInitOptions,
+    ) {}
 
-    constructor(@InjectConnection() private connection: Connection,
-                @Inject(PLUGIN_INIT_OPTIONS) private options: PluginInitOptions) {}
-
-    getAllItems() {
+    async getAllItems(): Promise<ExampleEntity[]> {
         return this.connection.getRepository(ExampleEntity).find();
     }
 
-    addItem(name: string) {
+    async addItem(name: string): Promise<ExampleEntity> {
         const repository = this.connection.getRepository(ExampleEntity);
         const example = repository.create({ name });
-        repository.save(example);
-        
+        await repository.save(example);
+
         return example;
     }
 }

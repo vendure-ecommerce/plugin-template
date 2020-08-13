@@ -1,13 +1,13 @@
-import { Args, Query, Resolver } from '@nestjs/graphql';
+import { Query, Resolver } from '@nestjs/graphql';
 import { ExampleService } from '../service/example.service';
-import { RequestContext, Ctx } from '@vendure/core';
+import { ExampleEntity } from '../entities/example.entity';
 
 @Resolver()
 export class ExampleResolver {
     constructor(private exampleService: ExampleService) {}
 
     @Query()
-    examples(@Ctx() ctx: RequestContext, @Args() args: any) {
+    examples(): Promise<ExampleEntity[]> {
         return this.exampleService.getAllItems();
     }
 }
