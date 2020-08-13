@@ -55,6 +55,20 @@
         "typescript-compatibility",
         "typescript-operations"
       ]
+    },
+    "src/ui/generated-types.ts": {
+      "schema": "http://localhost:3000/admin-api",
+      "documents": "src/ui/**/*.graphql.ts",
+      "plugins": [
+        {
+          "add": {
+            "content": "// tslint:disable"
+          }
+        },
+        "typescript",
+        "typescript-compatibility",
+        "typescript-operations"
+      ]
     }
   }
 }

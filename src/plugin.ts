@@ -6,6 +6,8 @@ import { ExampleService } from './service/example.service';
 import { shopApiExtensions, adminApiExtensions } from './api/api-extensions';
 import { ExampleResolver } from './api/example.resolver';
 import { ExampleAdminResolver } from './api/example-admin.resolver';
+import path from 'path';
+import { AdminUiExtension } from '@vendure/ui-devkit/compiler';
 
 /**
  * An example Vendure plugin.
@@ -40,18 +42,34 @@ import { ExampleAdminResolver } from './api/example-admin.resolver';
         // By definiting the `PLUGIN_INIT_OPTIONS` symbol as a provider, we can then inject the
         // user-defined options into other classes, such as the {@link ExampleService}.
         { provide: PLUGIN_INIT_OPTIONS, useFactory: () => ExamplePlugin.options },
-    ]
+    ],
 })
 export class ExamplePlugin {
-
     static options: PluginInitOptions;
 
     /**
      * The static `init()` method is a convention used by Vendure plugins which allows options
      * to be configured by the user.
      */
-    static init(options: PluginInitOptions) {
+    static init(options: PluginInitOptions): ExamplePlugin {
         this.options = options;
         return ExamplePlugin;
     }
+
+    static uiExtensions: AdminUiExtension = {
+        extensionPath: path.join(__dirname, 'ui'),
+        ngModules: [
+            {
+                type: 'shared' as const,
+                ngModuleFileName: 'example-ui-extension.module.ts',
+                ngModuleName: 'ExampleUiExtensionModule',
+            },
+            {
+                type: 'lazy' as const,
+                route: 'examples',
+                ngModuleFileName: 'example-ui-lazy.module.ts',
+                ngModuleName: 'ExampleUiLazyModule',
+            },
+        ],
+    };
 }

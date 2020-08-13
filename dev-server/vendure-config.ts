@@ -8,6 +8,7 @@ import { AssetServerPlugin } from '@vendure/asset-server-plugin';
 import { AdminUiPlugin } from '@vendure/admin-ui-plugin';
 import path from 'path';
 import { ExamplePlugin } from '../index';
+import { compileUiExtensions } from '@vendure/ui-devkit/compiler';
 
 export const headlessConfig: VendureConfig = {
     apiOptions: {
@@ -69,5 +70,15 @@ export const headlessConfig: VendureConfig = {
 
 export const config: VendureConfig = {
     ...headlessConfig,
-    plugins: [...(headlessConfig.plugins || []), AdminUiPlugin.init({ port: 3002 })],
+    plugins: [
+        ...(headlessConfig.plugins || []),
+        AdminUiPlugin.init({
+            port: 3002,
+            app: compileUiExtensions({
+                outputPath: path.join(__dirname, 'admin-ui'),
+                devMode: true,
+                extensions: [ExamplePlugin.uiExtensions],
+            }),
+        }),
+    ],
 };
