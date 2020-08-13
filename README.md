@@ -22,12 +22,19 @@ This repository can automatically generate GraphQL types for use in the plugin c
 yarn dev:generate-types
 ```
 
+## Linting
+
+This repository uses [eslint](https://eslint.org/) & [Prettier](https://prettier.io/) for finding and fixing common code issues and formatting your code in a standard way. To identify and fix issues, use the command:
+
+```bash
+yarn lint:fix
+```
+
 ## TODO
 
 This template could be made more complete by including:
 
 - Example Admin UI extension
-- ESLint / Prettier
 
 ## Development Server
 

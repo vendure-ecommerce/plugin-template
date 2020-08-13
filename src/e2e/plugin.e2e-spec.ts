@@ -14,8 +14,8 @@ import { GetExamples } from './types/generated-shop-types';
 registerInitializer('sqljs', new SqljsInitializer(path.join(__dirname, '__data__')));
 
 describe('example plugin', () => {
-    const exampleName = 'exampleName'
-        
+    const exampleName = 'exampleName';
+
     const { server, adminClient, shopClient } = createTestEnvironment({
         ...testConfig,
         plugins: [ExamplePlugin],
@@ -26,7 +26,7 @@ describe('example plugin', () => {
             initialData,
             productsCsvPath: path.join(__dirname, 'config/e2e-products.csv'),
             customerCount: 1,
-            logging: true
+            logging: true,
         });
         await adminClient.asSuperAdmin();
     }, TEST_SETUP_TIMEOUT_MS);
@@ -37,39 +37,37 @@ describe('example plugin', () => {
 
     describe('admin api', () => {
         it('adds an example', async () => {
+            const { addExample } = await adminClient.query<AddExample.Mutation, AddExample.Variables>(
+                ADD_EXAMPLE,
+                {
+                    name: exampleName,
+                },
+            );
 
-            const { addExample } = await adminClient.query<
-                AddExample.Mutation,
-                AddExample.Variables
-            >(ADD_EXAMPLE, {
-                name: exampleName
-            })
-        
-            expect(addExample?.name).toEqual(exampleName)
-        })
+            expect(addExample?.name).toEqual(exampleName);
+        });
 
         it('returns examples', async () => {
-            const { examples } = await adminClient.query<
-                GetExamples.Query,
-                GetExamples.Variables   
-            >(GET_EXAMPLES)
+            const { examples } = await adminClient.query<GetExamples.Query, GetExamples.Variables>(
+                GET_EXAMPLES,
+            );
 
-            expect(examples).toHaveLength(1)
-            expect(examples[0].name).toEqual(exampleName)
-        })
-    })
+            expect(examples).toHaveLength(1);
+            expect(examples[0].name).toEqual(exampleName);
+        });
+    });
 
     describe('shop api', () => {
-
         it('returns examples', async () => {
             const { examples } = await shopClient.query<
                 // GetExamples.Query,
                 // GetExamples.Variables
-                any, any
-            >(GET_EXAMPLES)
+                any,
+                any
+            >(GET_EXAMPLES);
 
-            expect(examples).toHaveLength(1)
-            expect(examples[0].name).toEqual(exampleName)
-        })
-    })
+            expect(examples).toHaveLength(1);
+            expect(examples[0].name).toEqual(exampleName);
+        });
+    });
 });

@@ -13,6 +13,9 @@
   "scripts": {
     "watch": "tsc --watch",
     "build": "rimraf lib && tsc",
+    "test": "yarn test:e2e",
+    "test:e2e": "jest --config src/e2e/config/jest-config.js",
+    "lint:fix": "eslint ./src/**/*.ts --fix",
     "dev:run": "docker-compose -f dev-server/docker-compose.yml up",
     "dev:stop": "docker-compose -f dev-server/docker-compose.yml down",
     "dev:restart": "docker-compose -f dev-server/docker-compose.yml restart server",
@@ -23,9 +26,7 @@
     "dev:populate": "yarn dev:db:start && ts-node ./dev-server/populate.ts && yarn dev:db:stop",
     "dev:run:server": "ts-node ./dev-server/index.ts",
     "dev:run:worker": "ts-node ./dev-server/index-worker.ts",
-    "dev:generate-types": "graphql-codegen --config ./codegen.json",
-    "test": "yarn test:e2e",
-    "test:e2e": "jest --config src/e2e/config/jest-config.js"
+    "dev:generate-types": "graphql-codegen --config ./codegen.json"
   },
   "devDependencies": {
     "@graphql-codegen/add": "^2.0.1",
@@ -33,6 +34,8 @@
     "@graphql-codegen/typescript-compatibility": "^1.17.8",
     "@graphql-codegen/typescript-operations": "^1.17.8",
     "@types/jest": "^26.0.9",
+    "@typescript-eslint/eslint-plugin": "^3.9.0",
+    "@typescript-eslint/parser": "^3.9.0",
     "@vendure/admin-ui": "^0.14.0",
     "@vendure/admin-ui-plugin": "^0.14.0",
     "@vendure/asset-server-plugin": "^0.14.0",
@@ -40,8 +43,12 @@
     "@vendure/create": "^0.14.0",
     "@vendure/testing": "^0.14.0",
     "@vendure/ui-devkit": "^0.14.0",
+    "eslint": "^7.6.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
     "jest": "^26.2.2",
     "pg": "^8.3.0",
+    "prettier": "^2.0.5",
     "rimraf": "^3.0.2",
     "ts-jest": "^26.1.4",
     "ts-node": "^8.10.2",
