@@ -8,6 +8,8 @@ import { ADD_EXAMPLE } from './graphql/admin-e2e-definitions.graphql';
 import { GET_EXAMPLES } from './graphql/shop-e2e-definitions.graphql';
 import { TEST_SETUP_TIMEOUT_MS, testConfig } from './config/test-config';
 import { initialData } from './config/e2e-initial-data';
+import { AddExample } from './types/generated-admin-types';
+import { GetExamples } from './types/generated-shop-types';
 
 registerInitializer('sqljs', new SqljsInitializer(path.join(__dirname, '__data__')));
 
@@ -37,11 +39,8 @@ describe('example plugin', () => {
         it('adds an example', async () => {
 
             const { addExample } = await adminClient.query<
-                // @TODO: These types are created by graphql-codegen, 
-                // which is not implemented in the plugin-template
-                // AddExample.Mutation,
-                // AddExample.Variables
-                any, any
+                AddExample.Mutation,
+                AddExample.Variables
             >(ADD_EXAMPLE, {
                 name: exampleName
             })
@@ -51,11 +50,8 @@ describe('example plugin', () => {
 
         it('returns examples', async () => {
             const { examples } = await adminClient.query<
-                // @TODO: These types are created by graphql-codegen, 
-                // which is not implemented in the plugin-template
-                // GetExamples.Query,
-                // GetExamples.Variables
-                any, any
+                GetExamples.Query,
+                GetExamples.Variables   
             >(GET_EXAMPLES)
 
             expect(examples).toHaveLength(1)
