@@ -14,12 +14,20 @@ See `src/e2e` for details, run tests with:
 yarn test
 ```
 
+## GraphQL Codegen
+
+This repository can automatically generate GraphQL types for use in the plugin code (see `src/e2e/plugin.e2e-spec.ts`).  To generate the types, ensure the development server is running, and use the command:
+
+```bash
+yarn dev:generate-types
+```
+
 ## TODO
 
 This template could be made more complete by including:
-* Example Admin UI extension
-* Code generation for resolvers & e2e tests
-* ESLint / Prettier
+
+- Example Admin UI extension
+- ESLint / Prettier
 
 ## Development Server
 
@@ -43,4 +51,8 @@ To restart the server (only) after a change, use the following command:
 yarn dev:restart
 ```
 
-Note: The Docker containers must be rebuilt when updating dependencies.  See 
+Note: The Docker containers must be rebuilt when updating dependencies.  Use the following command:
+
+```bash
+yarn dev:rebuild
+```
