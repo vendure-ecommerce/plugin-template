@@ -35,7 +35,6 @@ yarn lint:fix
 This template could be made more complete by including:
 
 - Example Admin UI extension
-- ESLint / Prettier
 
 ## Development Server
 
