@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 import { bootstrap, defaultConfig, mergeConfig } from '@vendure/core';
 import { populate } from '@vendure/core/cli';
 import { clearAllTables, populateCustomers } from '@vendure/testing';
@@ -22,7 +23,7 @@ if (require.main === module) {
                 requireVerification: false,
             },
             importExportOptions: {
-                importAssetsDir: path.join(require.resolve('@vendure/create'), '../assets/images')
+                importAssetsDir: path.join(require.resolve('@vendure/create'), '../assets/images'),
             },
             workerOptions: {
                 runInMainProcess: true,
@@ -38,14 +39,14 @@ if (require.main === module) {
                 path.join(require.resolve('@vendure/create'), '../assets/products.csv'),
             ),
         )
-        .then(async app => {
+        .then(async (app) => {
             console.log('populating customers...');
             await populateCustomers(10, populateConfig, true);
             return app.close();
         })
         .then(
             () => process.exit(0),
-            err => {
+            (err) => {
                 console.log(err);
                 process.exit(1);
             },
