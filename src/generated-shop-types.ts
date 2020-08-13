@@ -2095,6 +2095,7 @@ export type Query = {
   /** Search Products based on the criteria set by the `SearchInput` */
   search: SearchResponse;
   examples: ExampleList;
+  example?: Maybe<Example>;
 };
 
 
@@ -2137,6 +2138,11 @@ export type QuerySearchArgs = {
 
 export type QueryExamplesArgs = {
   options?: Maybe<ExampleListOptions>;
+};
+
+
+export type QueryExampleArgs = {
+  id: Scalars['ID'];
 };
 
 export type Refund = Node & {

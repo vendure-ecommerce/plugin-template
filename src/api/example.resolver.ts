@@ -12,4 +12,9 @@ export class ExampleResolver {
     examples(@Args() args: QueryExamplesArgs): Promise<PaginatedList<ExampleEntity>> {
         return this.exampleService.getAllItems(args.options || undefined);
     }
+
+    @Query()
+    example(@Args() args: { id: string }): Promise<ExampleEntity | undefined> {
+        return this.exampleService.getItem(args.id);
+    }
 }

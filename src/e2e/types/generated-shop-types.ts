@@ -2095,6 +2095,7 @@ export type Query = {
   /** Search Products based on the criteria set by the `SearchInput` */
   search: SearchResponse;
   examples: ExampleList;
+  example?: Maybe<Example>;
 };
 
 
@@ -2137,6 +2138,11 @@ export type QuerySearchArgs = {
 
 export type QueryExamplesArgs = {
   options?: Maybe<ExampleListOptions>;
+};
+
+
+export type QueryExampleArgs = {
+  id: Scalars['ID'];
 };
 
 export type Refund = Node & {
@@ -2456,6 +2462,12 @@ export namespace GetExamples {
   export type Items = (NonNullable<GetExamplesQuery['examples']['items'][0]>);
 }
 
+export namespace GetExample {
+  export type Variables = GetExampleQueryVariables;
+  export type Query = GetExampleQuery;
+  export type Example = (NonNullable<GetExampleQuery['example']>);
+}
+
 export type GetExamplesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -2469,4 +2481,17 @@ export type GetExamplesQuery = (
       & Pick<Example, 'name'>
     )> }
   ) }
+);
+
+export type GetExampleQueryVariables = Exact<{
+  id: Scalars['ID'];
+}>;
+
+
+export type GetExampleQuery = (
+  { __typename?: 'Query' }
+  & { example?: Maybe<(
+    { __typename?: 'Example' }
+    & Pick<Example, 'name'>
+  )> }
 );

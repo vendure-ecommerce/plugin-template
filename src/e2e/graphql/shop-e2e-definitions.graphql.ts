@@ -10,3 +10,11 @@ export const GET_EXAMPLES = gql`
         }
     }
 `;
+
+export const GET_EXAMPLE = gql`
+    query GetExample($id: ID!) {
+        example(id: $id) {
+            name
+        }
+    }
+`;

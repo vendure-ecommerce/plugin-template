@@ -3031,6 +3031,7 @@ export type Query = {
   zones: Array<Zone>;
   zone?: Maybe<Zone>;
   examples: ExampleList;
+  example?: Maybe<Example>;
 };
 
 
@@ -3233,6 +3234,11 @@ export type QueryZoneArgs = {
 
 export type QueryExamplesArgs = {
   options?: Maybe<ExampleListOptions>;
+};
+
+
+export type QueryExampleArgs = {
+  id: Scalars['ID'];
 };
 
 export type Refund = Node & {

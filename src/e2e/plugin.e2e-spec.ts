@@ -5,11 +5,11 @@ import path from 'path';
 import { ExamplePlugin } from '../plugin';
 
 import { ADD_EXAMPLE } from './graphql/admin-e2e-definitions.graphql';
-import { GET_EXAMPLES } from './graphql/shop-e2e-definitions.graphql';
+import { GET_EXAMPLES, GET_EXAMPLE } from './graphql/shop-e2e-definitions.graphql';
 import { TEST_SETUP_TIMEOUT_MS, testConfig } from './config/test-config';
 import { initialData } from './config/e2e-initial-data';
 import { AddExample } from './types/generated-admin-types';
-import { GetExamples } from './types/generated-shop-types';
+import { GetExamples, GetExample } from './types/generated-shop-types';
 
 registerInitializer('sqljs', new SqljsInitializer(path.join(__dirname, '__data__')));
 
@@ -47,7 +47,26 @@ describe('example plugin', () => {
             expect(addExample?.name).toEqual(exampleName);
         });
 
-        it('returns examples', async () => {
+        it('returns a list of examples', async () => {
+            const {
+                examples: { items, totalItems },
+            } = await adminClient.query<GetExamples.Query, GetExamples.Variables>(GET_EXAMPLES);
+
+            expect(totalItems).toEqual(1);
+            expect(items[0].name).toEqual(exampleName);
+        });
+
+        it('returns a single example', async () => {
+            const {
+                example: { name },
+            } = await adminClient.query<GetExample.Query, GetExample.Variables>(GET_EXAMPLE, { id: '1' });
+
+            expect(name).toEqual(exampleName);
+        });
+    });
+
+    describe('shop api', () => {
+        it('returns a list of examples', async () => {
             const {
                 examples: { items, totalItems },
             } = await shopClient.query<GetExamples.Query, GetExamples.Variables>(GET_EXAMPLES);
@@ -55,16 +74,13 @@ describe('example plugin', () => {
             expect(totalItems).toEqual(1);
             expect(items[0].name).toEqual(exampleName);
         });
-    });
 
-    describe('shop api', () => {
-        it('returns examples', async () => {
+        it('returns a single example', async () => {
             const {
-                examples: { items, totalItems },
-            } = await shopClient.query<GetExamples.Query, GetExamples.Variables>(GET_EXAMPLES);
+                example: { name },
+            } = await shopClient.query<GetExample.Query, GetExample.Variables>(GET_EXAMPLE, { id: '1' });
 
-            expect(totalItems).toEqual(1);
-            expect(items[0].name).toEqual(exampleName);
+            expect(name).toEqual(exampleName);
         });
     });
 });

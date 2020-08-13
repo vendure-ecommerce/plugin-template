@@ -15,6 +15,7 @@ export const commonApiExtensions = gql`
 
     extend type Query {
         examples(options: ExampleListOptions): ExampleList!
+        example(id: ID!): Example
     }
 
     # Auto-generated at runtime

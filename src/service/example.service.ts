@@ -26,6 +26,10 @@ export class ExampleService {
             }));
     }
 
+    async getItem(id: string): Promise<ExampleEntity | undefined> {
+        return this.connection.getRepository(ExampleEntity).findOne(id);
+    }
+
     async addItem(name: string): Promise<ExampleEntity> {
         const repository = this.connection.getRepository(ExampleEntity);
         const example = repository.create({ name });
