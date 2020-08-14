@@ -30,11 +30,9 @@ This repository uses [eslint](https://eslint.org/) & [Prettier](https://prettier
 yarn lint:fix
 ```
 
-## TODO
+## Admin UI
 
-This template could be made more complete by including:
-
-- Example Admin UI extension
+This repository also implements a basic Admin UI extension, which displays and allows editing of the `Example` entity.  These UI screens make use of the `BaseList`, `BaseDetail`, and `BaseResolver` classes, which are helpful for handling CRUD operations.
 
 ## Development Server
 
