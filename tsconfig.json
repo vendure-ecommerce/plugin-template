@@ -18,8 +18,5 @@
   },
   "files": [
     "./index.ts"
-  ],
-  "include": [
-    "src/ui/**/*.ts"
   ]
 }
