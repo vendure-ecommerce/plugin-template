@@ -8,9 +8,18 @@ export const commonApiExtensions = gql`
         name: String!
     }
 
-    extend type Query {
-        examples: [Example!]!
+    type ExampleList implements PaginatedList {
+        items: [Example!]!
+        totalItems: Int!
     }
+
+    extend type Query {
+        examples(options: ExampleListOptions): ExampleList!
+        example(id: ID!): Example
+    }
+
+    # Auto-generated at runtime
+    input ExampleListOptions
 `;
 
 export const shopApiExtensions = gql`
@@ -21,6 +30,16 @@ export const adminApiExtensions = gql`
     ${commonApiExtensions}
 
     extend type Mutation {
-        addExample(name: String!): Example!
+        addExample(input: CreateExampleInput!): Example!
+        updateExample(input: UpdateExampleInput!): Example!
+    }
+
+    input CreateExampleInput {
+        name: String!
+    }
+
+    input UpdateExampleInput {
+        id: ID!
+        name: String!
     }
 `;

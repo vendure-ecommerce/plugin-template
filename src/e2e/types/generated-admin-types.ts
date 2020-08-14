@@ -494,6 +494,10 @@ export type CreateCustomerInput = {
   customFields?: Maybe<Scalars['JSON']>;
 };
 
+export type CreateExampleInput = {
+  name: Scalars['String'];
+};
+
 export type CreateFacetInput = {
   code: Scalars['String'];
   isPrivate: Scalars['Boolean'];
@@ -1124,6 +1128,32 @@ export type Example = Node & {
   createdAt: Scalars['DateTime'];
   updatedAt: Scalars['DateTime'];
   name: Scalars['String'];
+};
+
+export type ExampleFilterParameter = {
+  createdAt?: Maybe<DateOperators>;
+  updatedAt?: Maybe<DateOperators>;
+  name?: Maybe<StringOperators>;
+};
+
+export type ExampleList = PaginatedList & {
+  __typename?: 'ExampleList';
+  items: Array<Example>;
+  totalItems: Scalars['Int'];
+};
+
+export type ExampleListOptions = {
+  skip?: Maybe<Scalars['Int']>;
+  take?: Maybe<Scalars['Int']>;
+  sort?: Maybe<ExampleSortParameter>;
+  filter?: Maybe<ExampleFilterParameter>;
+};
+
+export type ExampleSortParameter = {
+  id?: Maybe<SortOrder>;
+  createdAt?: Maybe<SortOrder>;
+  updatedAt?: Maybe<SortOrder>;
+  name?: Maybe<SortOrder>;
 };
 
 export type Facet = Node & {
@@ -1943,6 +1973,7 @@ export type Mutation = {
   /** Remove members from a Zone */
   removeMembersFromZone: Zone;
   addExample: Example;
+  updateExample: Example;
 };
 
 
@@ -2405,7 +2436,12 @@ export type MutationRemoveMembersFromZoneArgs = {
 
 
 export type MutationAddExampleArgs = {
-  name: Scalars['String'];
+  input: CreateExampleInput;
+};
+
+
+export type MutationUpdateExampleArgs = {
+  input: UpdateExampleInput;
 };
 
 export type NativeAuthInput = {
@@ -3004,7 +3040,8 @@ export type Query = {
   taxRate?: Maybe<TaxRate>;
   zones: Array<Zone>;
   zone?: Maybe<Zone>;
-  examples: Array<Example>;
+  examples: ExampleList;
+  example?: Maybe<Example>;
 };
 
 
@@ -3201,6 +3238,16 @@ export type QueryTaxRateArgs = {
 
 
 export type QueryZoneArgs = {
+  id: Scalars['ID'];
+};
+
+
+export type QueryExamplesArgs = {
+  options?: Maybe<ExampleListOptions>;
+};
+
+
+export type QueryExampleArgs = {
   id: Scalars['ID'];
 };
 
@@ -3668,6 +3715,11 @@ export type UpdateCustomerNoteInput = {
   note: Scalars['String'];
 };
 
+export type UpdateExampleInput = {
+  id: Scalars['ID'];
+  name: Scalars['String'];
+};
+
 export type UpdateFacetInput = {
   id: Scalars['ID'];
   isPrivate?: Maybe<Scalars['Boolean']>;
@@ -3824,8 +3876,14 @@ export namespace AddExample {
   export type AddExample = AddExampleMutation['addExample'];
 }
 
+export namespace UpdateExample {
+  export type Variables = UpdateExampleMutationVariables;
+  export type Mutation = UpdateExampleMutation;
+  export type UpdateExample = UpdateExampleMutation['updateExample'];
+}
+
 export type AddExampleMutationVariables = Exact<{
-  name: Scalars['String'];
+  input: CreateExampleInput;
 }>;
 
 
@@ -3833,6 +3891,19 @@ export type AddExampleMutation = (
   { __typename?: 'Mutation' }
   & { addExample: (
     { __typename?: 'Example' }
-    & Pick<Example, 'name'>
+    & Pick<Example, 'id' | 'name'>
+  ) }
+);
+
+export type UpdateExampleMutationVariables = Exact<{
+  input: UpdateExampleInput;
+}>;
+
+
+export type UpdateExampleMutation = (
+  { __typename?: 'Mutation' }
+  & { updateExample: (
+    { __typename?: 'Example' }
+    & Pick<Example, 'id' | 'name'>
   ) }
 );
