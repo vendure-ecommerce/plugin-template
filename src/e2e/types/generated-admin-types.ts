@@ -494,6 +494,10 @@ export type CreateCustomerInput = {
   customFields?: Maybe<Scalars['JSON']>;
 };
 
+export type CreateExampleInput = {
+  name: Scalars['String'];
+};
+
 export type CreateFacetInput = {
   code: Scalars['String'];
   isPrivate: Scalars['Boolean'];
@@ -1969,6 +1973,7 @@ export type Mutation = {
   /** Remove members from a Zone */
   removeMembersFromZone: Zone;
   addExample: Example;
+  updateExample: Example;
 };
 
 
@@ -2431,7 +2436,12 @@ export type MutationRemoveMembersFromZoneArgs = {
 
 
 export type MutationAddExampleArgs = {
-  name: Scalars['String'];
+  input: CreateExampleInput;
+};
+
+
+export type MutationUpdateExampleArgs = {
+  input: UpdateExampleInput;
 };
 
 export type NativeAuthInput = {
@@ -3705,6 +3715,11 @@ export type UpdateCustomerNoteInput = {
   note: Scalars['String'];
 };
 
+export type UpdateExampleInput = {
+  id: Scalars['ID'];
+  name: Scalars['String'];
+};
+
 export type UpdateFacetInput = {
   id: Scalars['ID'];
   isPrivate?: Maybe<Scalars['Boolean']>;
@@ -3861,8 +3876,14 @@ export namespace AddExample {
   export type AddExample = AddExampleMutation['addExample'];
 }
 
+export namespace UpdateExample {
+  export type Variables = UpdateExampleMutationVariables;
+  export type Mutation = UpdateExampleMutation;
+  export type UpdateExample = UpdateExampleMutation['updateExample'];
+}
+
 export type AddExampleMutationVariables = Exact<{
-  name: Scalars['String'];
+  input: CreateExampleInput;
 }>;
 
 
@@ -3870,6 +3891,19 @@ export type AddExampleMutation = (
   { __typename?: 'Mutation' }
   & { addExample: (
     { __typename?: 'Example' }
-    & Pick<Example, 'name'>
+    & Pick<Example, 'id' | 'name'>
+  ) }
+);
+
+export type UpdateExampleMutationVariables = Exact<{
+  input: UpdateExampleInput;
+}>;
+
+
+export type UpdateExampleMutation = (
+  { __typename?: 'Mutation' }
+  & { updateExample: (
+    { __typename?: 'Example' }
+    & Pick<Example, 'id' | 'name'>
   ) }
 );

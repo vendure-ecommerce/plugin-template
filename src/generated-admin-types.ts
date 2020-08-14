@@ -494,6 +494,10 @@ export type CreateCustomerInput = {
   customFields?: Maybe<Scalars['JSON']>;
 };
 
+export type CreateExampleInput = {
+  name: Scalars['String'];
+};
+
 export type CreateFacetInput = {
   code: Scalars['String'];
   isPrivate: Scalars['Boolean'];
@@ -1969,6 +1973,7 @@ export type Mutation = {
   /** Remove members from a Zone */
   removeMembersFromZone: Zone;
   addExample: Example;
+  updateExample: Example;
 };
 
 
@@ -2431,7 +2436,12 @@ export type MutationRemoveMembersFromZoneArgs = {
 
 
 export type MutationAddExampleArgs = {
-  name: Scalars['String'];
+  input: CreateExampleInput;
+};
+
+
+export type MutationUpdateExampleArgs = {
+  input: UpdateExampleInput;
 };
 
 export type NativeAuthInput = {
@@ -3703,6 +3713,11 @@ export type UpdateCustomerInput = {
 export type UpdateCustomerNoteInput = {
   noteId: Scalars['ID'];
   note: Scalars['String'];
+};
+
+export type UpdateExampleInput = {
+  id: Scalars['ID'];
+  name: Scalars['String'];
 };
 
 export type UpdateFacetInput = {

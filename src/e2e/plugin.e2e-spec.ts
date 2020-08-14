@@ -4,17 +4,18 @@ import path from 'path';
 
 import { ExamplePlugin } from '../plugin';
 
-import { ADD_EXAMPLE } from './graphql/admin-e2e-definitions.graphql';
+import { ADD_EXAMPLE, UPDATE_EXAMPLE } from './graphql/admin-e2e-definitions.graphql';
 import { GET_EXAMPLES, GET_EXAMPLE } from './graphql/shop-e2e-definitions.graphql';
 import { TEST_SETUP_TIMEOUT_MS, testConfig } from './config/test-config';
 import { initialData } from './config/e2e-initial-data';
-import { AddExample } from './types/generated-admin-types';
+import { AddExample, UpdateExample } from './types/generated-admin-types';
 import { GetExamples, GetExample } from './types/generated-shop-types';
 
 registerInitializer('sqljs', new SqljsInitializer(path.join(__dirname, '__data__')));
 
 describe('example plugin', () => {
     const exampleName = 'exampleName';
+    let exampleId;
 
     const { server, adminClient, shopClient } = createTestEnvironment({
         ...testConfig,
@@ -37,14 +38,30 @@ describe('example plugin', () => {
 
     describe('admin api', () => {
         it('adds an example', async () => {
-            const { addExample } = await adminClient.query<AddExample.Mutation, AddExample.Variables>(
-                ADD_EXAMPLE,
-                {
+            const initialName = 'initialName';
+            const {
+                addExample: { id, name },
+            } = await adminClient.query<AddExample.Mutation, AddExample.Variables>(ADD_EXAMPLE, {
+                input: {
+                    name: initialName,
+                },
+            });
+
+            exampleId = id;
+            expect(name).toEqual(initialName);
+        });
+
+        it('updates an example', async () => {
+            const {
+                updateExample: { name },
+            } = await adminClient.query<UpdateExample.Mutation, UpdateExample.Variables>(UPDATE_EXAMPLE, {
+                input: {
+                    id: exampleId,
                     name: exampleName,
                 },
-            );
+            });
 
-            expect(addExample?.name).toEqual(exampleName);
+            expect(name).toEqual(exampleName);
         });
 
         it('returns a list of examples', async () => {

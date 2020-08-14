@@ -30,6 +30,16 @@ export const adminApiExtensions = gql`
     ${commonApiExtensions}
 
     extend type Mutation {
-        addExample(name: String!): Example!
+        addExample(input: CreateExampleInput!): Example!
+        updateExample(input: UpdateExampleInput!): Example!
+    }
+
+    input CreateExampleInput {
+        name: String!
+    }
+
+    input UpdateExampleInput {
+        id: ID!
+        name: String!
     }
 `;
