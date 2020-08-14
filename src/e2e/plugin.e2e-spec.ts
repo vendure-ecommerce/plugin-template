@@ -15,7 +15,7 @@ registerInitializer('sqljs', new SqljsInitializer(path.join(__dirname, '__data__
 
 describe('example plugin', () => {
     const exampleName = 'exampleName';
-    let exampleId;
+    let exampleId: string;
 
     const { server, adminClient, shopClient } = createTestEnvironment({
         ...testConfig,

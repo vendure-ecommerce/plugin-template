@@ -1,6 +1,7 @@
 import { Args, Mutation, Resolver } from '@nestjs/graphql';
-import { ExampleService } from '../service/example.service';
 import { Permission, Allow } from '@vendure/core';
+
+import { ExampleService } from '../service/example.service';
 import { ExampleEntity } from '../entities/example.entity';
 import { MutationAddExampleArgs, MutationUpdateExampleArgs } from '../generated-admin-types';
 

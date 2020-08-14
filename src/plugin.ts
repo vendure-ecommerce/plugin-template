@@ -1,13 +1,14 @@
 import { PluginCommonModule, VendurePlugin } from '@vendure/core';
-import { PluginInitOptions } from './types';
+import { AdminUiExtension } from '@vendure/ui-devkit/compiler';
+import path from 'path';
+
 import { PLUGIN_INIT_OPTIONS } from './constants';
 import { ExampleEntity } from './entities/example.entity';
 import { ExampleService } from './service/example.service';
-import { shopApiExtensions, adminApiExtensions } from './api/api-extensions';
+import { adminApiExtensions, shopApiExtensions } from './api/api-extensions';
 import { ExampleResolver } from './api/example.resolver';
 import { ExampleAdminResolver } from './api/example-admin.resolver';
-import path from 'path';
-import { AdminUiExtension } from '@vendure/ui-devkit/compiler';
+import { PluginInitOptions } from './types';
 
 /**
  * An example Vendure plugin.

@@ -1,11 +1,11 @@
 import { Injectable, Inject } from '@nestjs/common';
 import { InjectConnection } from '@nestjs/typeorm';
+import { ListQueryBuilder, PaginatedList } from '@vendure/core';
 import { Connection } from 'typeorm';
 
 import { ExampleEntity } from '../entities/example.entity';
 import { PLUGIN_INIT_OPTIONS } from '../constants';
 import { PluginInitOptions } from '../types';
-import { ListQueryBuilder, PaginatedList } from '@vendure/core';
 import { ExampleListOptions, CreateExampleInput, UpdateExampleInput } from '../generated-admin-types';
 
 @Injectable()

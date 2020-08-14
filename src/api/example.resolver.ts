@@ -1,7 +1,8 @@
 import { Args, Query, Resolver } from '@nestjs/graphql';
+import { PaginatedList } from '@vendure/core';
+
 import { ExampleService } from '../service/example.service';
 import { ExampleEntity } from '../entities/example.entity';
-import { PaginatedList } from '@vendure/core';
 import { QueryExamplesArgs } from '../generated-admin-types';
 
 @Resolver()
