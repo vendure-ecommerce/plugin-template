@@ -7,10 +7,17 @@ import {
     NotificationService,
     ServerConfigService,
 } from '@vendure/admin-ui/core';
-import { marker as _ } from '@biesbjerg/ngx-translate-extract-marker';
+import { Observable, of } from 'rxjs';
+import { filter, mapTo } from 'rxjs/operators';
 
-import { Example, AddExampleMutationVariables, AddExample } from '../../generated-types';
-import { ADD_EXAMPLE } from './example-detail.graphql';
+import {
+    Example,
+    AddExample,
+    CreateExampleInput,
+    UpdateExample,
+    UpdateExampleInput,
+} from '../../generated-types';
+import { ADD_EXAMPLE, UPDATE_EXAMPLE } from './example-detail.graphql';
 
 @Component({
     selector: 'pe-example-detail',
@@ -45,63 +52,63 @@ export class ExampleDetailComponent extends BaseDetailComponent<Example> impleme
             return;
         }
         const formValue = this.detailForm.value;
-        const example: AddExampleMutationVariables = {
+        const example: CreateExampleInput = {
             name: formValue.name,
         };
-        this.dataService.mutate<AddExample.Mutation, AddExample.Variables>(ADD_EXAMPLE, example).subscribe(
-            (data) => {
-                this.notificationService.success(_('common.notify-create-success'), {
-                    entity: 'Example',
-                });
-                this.detailForm.markAsPristine();
-                this.changeDetector.markForCheck();
-                this.router.navigate(['../', data.addExample.id], { relativeTo: this.route });
-            },
-            () => {
-                this.notificationService.error(_('common.notify-create-error'), {
-                    entity: 'Example',
-                });
-            },
-        );
+        this.dataService
+            .mutate<AddExample.Mutation, AddExample.Variables>(ADD_EXAMPLE, { input: example })
+            .subscribe(
+                (data) => {
+                    this.notificationService.success('common.notify-create-success', {
+                        entity: 'Example',
+                    });
+                    this.detailForm.markAsPristine();
+                    this.changeDetector.markForCheck();
+                    this.router.navigate(['../', data.addExample.id], { relativeTo: this.route });
+                },
+                () => {
+                    this.notificationService.error('common.notify-create-error', {
+                        entity: 'Example',
+                    });
+                },
+            );
     }
 
     save(): void {
-        // this.saveChanges()
-        //     .pipe(filter(result => !!result))
-        //     .subscribe(
-        //         () => {
-        //             this.detailForm.markAsPristine();
-        //             this.changeDetector.markForCheck();
-        //             this.notificationService.success('common.notify-update-success', {
-        //                 entity: 'Example',
-        //             });
-        //         },
-        //         () => {
-        //             this.notificationService.error('common.notify-update-error', {
-        //                 entity: 'Example',
-        //             });
-        //         },
-        //     );
+        this.saveChanges()
+            .pipe(filter((result) => !!result))
+            .subscribe(
+                () => {
+                    this.detailForm.markAsPristine();
+                    this.changeDetector.markForCheck();
+                    this.notificationService.success('common.notify-update-success', {
+                        entity: 'Example',
+                    });
+                },
+                () => {
+                    this.notificationService.error('common.notify-update-error', {
+                        entity: 'Example',
+                    });
+                },
+            );
     }
 
-    // private saveChanges(): Observable<boolean> {
-    //     if (this.detailForm.dirty) {
-    //         const formValue = this.detailForm.value;
-    //         const input: UpdateExampleInput = {
-    //             id: this.id,
-    //             summary: formValue.summary,
-    //             body: formValue.body,
-    //             response: formValue.response,
-    //         };
-    //         return this.dataService
-    //             .mutate<UpdateReview.Mutation, UpdateReview.Variables>(UPDATE_REVIEW, {
-    //                 input,
-    //             })
-    //             .pipe(mapTo(true));
-    //     } else {
-    //         return of(false);
-    //     }
-    // }
+    private saveChanges(): Observable<boolean> {
+        if (this.detailForm.dirty) {
+            const formValue = this.detailForm.value;
+            const input: UpdateExampleInput = {
+                id: this.id,
+                name: formValue.name,
+            };
+            return this.dataService
+                .mutate<UpdateExample.Mutation, UpdateExample.Variables>(UPDATE_EXAMPLE, {
+                    input,
+                })
+                .pipe(mapTo(true));
+        } else {
+            return of(false);
+        }
+    }
 
     protected setFormValues(entity: Example): void {
         this.detailForm.patchValue({
