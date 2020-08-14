@@ -12,11 +12,3 @@ export const GET_EXAMPLES = gql`
         }
     }
 `;
-
-export const ADD_EXAMPLE = gql`
-    mutation AddExample($name: String!) {
-        addExample(name: $name) {
-            name
-        }
-    }
-`;

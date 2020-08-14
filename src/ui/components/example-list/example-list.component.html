@@ -2,11 +2,21 @@
     <vdr-ab-left>
         <input
             type="text"
-            [placeholder]="'catalog.filter-by-name' | translate"
-            class="clr-input"
+            name="searchTerm"
             [formControl]="filterTermControl"
+            [placeholder]="'catalog.filter-by-name' | translate"
+            class="clr-input search-input"
         />
     </vdr-ab-left>
+    <vdr-ab-right>
+        <vdr-action-bar-items locationId="example-list"></vdr-action-bar-items>
+        <a class="btn btn-primary" [routerLink]="['./create']">
+            <clr-icon shape="plus"></clr-icon>
+            <!-- @TODO: translations -->
+            <!-- {{ 'customer.create-new-customer' | translate }} -->
+            Add New Example
+        </a>
+    </vdr-ab-right>
 </vdr-action-bar>
 <vdr-data-table
     [items]="items$ | async"

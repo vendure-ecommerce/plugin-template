@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
 import { BaseListComponent, DataService } from '@vendure/admin-ui/core';
-import { debounceTime } from 'rxjs/operators';
+import { debounceTime, takeUntil } from 'rxjs/operators';
 
 import { GET_EXAMPLES } from './example-list.graphql';
 import { GetExamples, SortOrder } from '../../generated-types';
@@ -52,6 +52,8 @@ export class ExampleListComponent
     ngOnInit(): void {
         super.ngOnInit();
 
-        this.filterTermControl.valueChanges.pipe(debounceTime(250)).subscribe(() => this.refresh());
+        this.filterTermControl.valueChanges
+            .pipe(debounceTime(250), takeUntil(this.destroy$))
+            .subscribe(() => this.refresh());
     }
 }

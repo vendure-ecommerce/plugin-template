@@ -3031,6 +3031,7 @@ export type Query = {
   zones: Array<Zone>;
   zone?: Maybe<Zone>;
   examples: ExampleList;
+  example?: Maybe<Example>;
 };
 
 
@@ -3233,6 +3234,11 @@ export type QueryZoneArgs = {
 
 export type QueryExamplesArgs = {
   options?: Maybe<ExampleListOptions>;
+};
+
+
+export type QueryExampleArgs = {
+  id: Scalars['ID'];
 };
 
 export type Refund = Node & {
@@ -3849,6 +3855,12 @@ export type Zone = Node & {
   members: Array<Country>;
 };
 
+export namespace AddExample {
+  export type Variables = AddExampleMutationVariables;
+  export type Mutation = AddExampleMutation;
+  export type AddExample = AddExampleMutation['addExample'];
+}
+
 export namespace GetExamples {
   export type Variables = GetExamplesQueryVariables;
   export type Query = GetExamplesQuery;
@@ -3856,11 +3868,24 @@ export namespace GetExamples {
   export type Items = (NonNullable<GetExamplesQuery['examples']['items'][0]>);
 }
 
-export namespace AddExample {
-  export type Variables = AddExampleMutationVariables;
-  export type Mutation = AddExampleMutation;
-  export type AddExample = AddExampleMutation['addExample'];
+export namespace GetExample {
+  export type Variables = GetExampleQueryVariables;
+  export type Query = GetExampleQuery;
+  export type Example = (NonNullable<GetExampleQuery['example']>);
 }
+
+export type AddExampleMutationVariables = Exact<{
+  name: Scalars['String'];
+}>;
+
+
+export type AddExampleMutation = (
+  { __typename?: 'Mutation' }
+  & { addExample: (
+    { __typename?: 'Example' }
+    & Pick<Example, 'id' | 'name'>
+  ) }
+);
 
 export type GetExamplesQueryVariables = Exact<{
   options?: Maybe<ExampleListOptions>;
@@ -3879,15 +3904,15 @@ export type GetExamplesQuery = (
   ) }
 );
 
-export type AddExampleMutationVariables = Exact<{
-  name: Scalars['String'];
+export type GetExampleQueryVariables = Exact<{
+  id: Scalars['ID'];
 }>;
 
 
-export type AddExampleMutation = (
-  { __typename?: 'Mutation' }
-  & { addExample: (
+export type GetExampleQuery = (
+  { __typename?: 'Query' }
+  & { example?: Maybe<(
     { __typename?: 'Example' }
-    & Pick<Example, 'name'>
-  ) }
+    & Pick<Example, 'id' | 'name' | 'createdAt'>
+  )> }
 );
