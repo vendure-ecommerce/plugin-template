@@ -74,11 +74,11 @@ describe('example plugin', () => {
         });
 
         it('returns a single example', async () => {
-            const {
-                example: { name },
-            } = await adminClient.query<GetExample.Query, GetExample.Variables>(GET_EXAMPLE, { id: '1' });
+            const { example } = await adminClient.query<GetExample.Query, GetExample.Variables>(GET_EXAMPLE, {
+                id: '1',
+            });
 
-            expect(name).toEqual(exampleName);
+            expect(example?.name).toEqual(exampleName);
         });
     });
 
@@ -93,11 +93,11 @@ describe('example plugin', () => {
         });
 
         it('returns a single example', async () => {
-            const {
-                example: { name },
-            } = await shopClient.query<GetExample.Query, GetExample.Variables>(GET_EXAMPLE, { id: '1' });
+            const { example } = await shopClient.query<GetExample.Query, GetExample.Variables>(GET_EXAMPLE, {
+                id: '1',
+            });
 
-            expect(name).toEqual(exampleName);
+            expect(example?.name).toEqual(exampleName);
         });
     });
 });
