@@ -1,5 +1,5 @@
 import { Args, Query, Resolver } from '@nestjs/graphql';
-import { PaginatedList } from '@vendure/core';
+import { Ctx, PaginatedList, RequestContext } from '@vendure/core';
 
 import { ExampleService } from '../service/example.service';
 import { ExampleEntity } from '../entities/example.entity';
@@ -10,12 +10,15 @@ export class ExampleResolver {
     constructor(private exampleService: ExampleService) {}
 
     @Query()
-    examples(@Args() args: QueryExamplesArgs): Promise<PaginatedList<ExampleEntity>> {
-        return this.exampleService.getAllItems(args.options || undefined);
+    examples(
+        @Ctx() ctx: RequestContext,
+        @Args() args: QueryExamplesArgs,
+    ): Promise<PaginatedList<ExampleEntity>> {
+        return this.exampleService.getAllItems(ctx, args.options || undefined);
     }
 
     @Query()
-    example(@Args() args: { id: string }): Promise<ExampleEntity | undefined> {
-        return this.exampleService.getItem(args.id);
+    example(@Ctx() ctx: RequestContext, @Args() args: { id: string }): Promise<ExampleEntity | undefined> {
+        return this.exampleService.getItem(ctx, args.id);
     }
 }
