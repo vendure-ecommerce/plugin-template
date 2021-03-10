@@ -1,7 +1,7 @@
 import {
-    examplePaymentHandler,
     DefaultJobQueuePlugin,
     DefaultSearchPlugin,
+    dummyPaymentHandler,
     VendureConfig,
 } from '@vendure/core';
 import { AssetServerPlugin } from '@vendure/asset-server-plugin';
@@ -35,12 +35,6 @@ export const headlessConfig: VendureConfig = {
             password: 'superadmin',
         },
     },
-    workerOptions: {
-        options: {
-            host: process.env.WORKER_HOST || 'localhost',
-            port: Number(process.env.WORKER_PORT) || 3020,
-        },
-    },
     dbConnectionOptions: {
         type: 'postgres',
         synchronize: false, // turn this off for production
@@ -53,14 +47,13 @@ export const headlessConfig: VendureConfig = {
         migrations: [path.join(__dirname, '../migrations/*.ts')],
     },
     paymentOptions: {
-        paymentMethodHandlers: [examplePaymentHandler],
+        paymentMethodHandlers: [dummyPaymentHandler],
     },
     customFields: {},
     plugins: [
         AssetServerPlugin.init({
             route: 'assets',
             assetUploadDir: path.join(__dirname, './static/assets'),
-            port: 3001,
         }),
         DefaultJobQueuePlugin,
         DefaultSearchPlugin,
@@ -73,6 +66,7 @@ export const config: VendureConfig = {
     plugins: [
         ...(headlessConfig.plugins || []),
         AdminUiPlugin.init({
+            route: 'admin',
             port: 3002,
             app: compileUiExtensions({
                 outputPath: path.join(__dirname, 'admin-ui'),

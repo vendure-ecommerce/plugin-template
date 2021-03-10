@@ -11,8 +11,6 @@ services:
       - ../:/usr/src/app
       - /usr/src/app/node_modules
     environment:
-      WORKER_HOST: worker
-      WORKER_PORT: 3020
       DATABASE_HOST: database
       DATABASE_PORT: 5432
     depends_on:
@@ -27,8 +25,6 @@ services:
       - ../:/usr/src/app
       - /usr/src/app/node_modules
     environment:
-      WORKER_REMOTE: 'true'
-      WORKER_PORT: 3020
       DATABASE_HOST: database
       DATABASE_PORT: 5432
     depends_on:
