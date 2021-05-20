@@ -29,10 +29,12 @@ export const headlessConfig: VendureConfig = {
         shopApiDebug: true, // turn this off for production
     },
     authOptions: {
-        sessionSecret: 'v5evpqy0rn',
         superadminCredentials: {
             identifier: 'superadmin',
             password: 'superadmin',
+        },
+        cookieOptions: {
+            secret: 'v5evpqy0rn',
         },
     },
     dbConnectionOptions: {
