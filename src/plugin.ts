@@ -1,4 +1,4 @@
-import { PluginCommonModule, VendurePlugin } from '@vendure/core';
+import { PluginCommonModule, Type, VendurePlugin } from '@vendure/core';
 import { AdminUiExtension } from '@vendure/ui-devkit/compiler';
 import path from 'path';
 
@@ -52,7 +52,7 @@ export class ExamplePlugin {
      * The static `init()` method is a convention used by Vendure plugins which allows options
      * to be configured by the user.
      */
-    static init(options: PluginInitOptions): ExamplePlugin {
+    static init(options: PluginInitOptions): Type<ExamplePlugin> {
         this.options = options;
         return ExamplePlugin;
     }
