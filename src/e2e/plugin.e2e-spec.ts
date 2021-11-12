@@ -4,11 +4,11 @@ import path from 'path';
 
 import { ExamplePlugin } from '../plugin';
 
-import { ADD_EXAMPLE, UPDATE_EXAMPLE } from './graphql/admin-e2e-definitions.graphql';
+import { CREATE_EXAMPLE, UPDATE_EXAMPLE } from './graphql/admin-e2e-definitions.graphql';
 import { GET_EXAMPLES, GET_EXAMPLE } from './graphql/shop-e2e-definitions.graphql';
 import { TEST_SETUP_TIMEOUT_MS, testConfig } from './config/test-config';
 import { initialData } from './config/e2e-initial-data';
-import { AddExample, UpdateExample } from './types/generated-admin-types';
+import { CreateExample, UpdateExample } from './types/generated-admin-types';
 import { GetExamples, GetExample } from './types/generated-shop-types';
 
 registerInitializer('sqljs', new SqljsInitializer(path.join(__dirname, '__data__')));
@@ -40,8 +40,8 @@ describe('example plugin', () => {
         it('adds an example', async () => {
             const initialName = 'initialName';
             const {
-                addExample: { id, name },
-            } = await adminClient.query<AddExample.Mutation, AddExample.Variables>(ADD_EXAMPLE, {
+                createExample: { id, name },
+            } = await adminClient.query<CreateExample.Mutation, CreateExample.Variables>(CREATE_EXAMPLE, {
                 input: {
                     name: initialName,
                 },

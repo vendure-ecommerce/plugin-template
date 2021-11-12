@@ -3,7 +3,7 @@ import { Allow, Ctx, Permission, RequestContext, Transaction } from '@vendure/co
 
 import { ExampleService } from '../service/example.service';
 import { ExampleEntity } from '../entities/example.entity';
-import { MutationAddExampleArgs, MutationUpdateExampleArgs } from '../generated-admin-types';
+import { MutationCreateExampleArgs, MutationUpdateExampleArgs } from '../generated-admin-types';
 
 @Resolver()
 export class ExampleAdminResolver {
@@ -12,7 +12,7 @@ export class ExampleAdminResolver {
     @Transaction()
     @Mutation()
     @Allow(Permission.SuperAdmin)
-    addExample(@Ctx() ctx: RequestContext, @Args() args: MutationAddExampleArgs): Promise<ExampleEntity> {
+    createExample(@Ctx() ctx: RequestContext, @Args() args: MutationCreateExampleArgs): Promise<ExampleEntity> {
         return this.exampleService.addItem(ctx, args.input);
     }
 

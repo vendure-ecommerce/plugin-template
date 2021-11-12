@@ -1,8 +1,8 @@
 import gql from 'graphql-tag';
 
-export const ADD_EXAMPLE = gql`
-    mutation AddExample($input: CreateExampleInput!) {
-        addExample(input: $input) {
+export const CREATE_EXAMPLE = gql`
+    mutation CreateExample($input: CreateExampleInput!) {
+        createExample(input: $input) {
             id
             name
         }

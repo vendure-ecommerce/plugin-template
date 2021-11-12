@@ -12,12 +12,12 @@ import { filter, mapTo } from 'rxjs/operators';
 
 import {
     Example,
-    AddExample,
+    CreateExample,
     CreateExampleInput,
     UpdateExample,
     UpdateExampleInput,
 } from '../../generated-types';
-import { ADD_EXAMPLE, UPDATE_EXAMPLE } from './example-detail.graphql';
+import { CREATE_EXAMPLE, UPDATE_EXAMPLE } from './example-detail.graphql';
 
 @Component({
     selector: 'pe-example-detail',
@@ -56,7 +56,7 @@ export class ExampleDetailComponent extends BaseDetailComponent<Example> impleme
             name: formValue.name,
         };
         this.dataService
-            .mutate<AddExample.Mutation, AddExample.Variables>(ADD_EXAMPLE, { input: example })
+            .mutate<CreateExample.Mutation, CreateExample.Variables>(CREATE_EXAMPLE, { input: example })
             .subscribe(
                 (data) => {
                     this.notificationService.success('common.notify-create-success', {
@@ -64,7 +64,7 @@ export class ExampleDetailComponent extends BaseDetailComponent<Example> impleme
                     });
                     this.detailForm.markAsPristine();
                     this.changeDetector.markForCheck();
-                    this.router.navigate(['../', data.addExample.id], { relativeTo: this.route });
+                    this.router.navigate(['../', data.createExample.id], { relativeTo: this.route });
                 },
                 () => {
                     this.notificationService.error('common.notify-create-error', {
