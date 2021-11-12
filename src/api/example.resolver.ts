@@ -14,11 +14,11 @@ export class ExampleResolver {
         @Ctx() ctx: RequestContext,
         @Args() args: QueryExamplesArgs,
     ): Promise<PaginatedList<ExampleEntity>> {
-        return this.exampleService.getAllItems(ctx, args.options || undefined);
+        return this.exampleService.findAll(ctx, args.options || undefined);
     }
 
     @Query()
     example(@Ctx() ctx: RequestContext, @Args() args: { id: string }): Promise<ExampleEntity | undefined> {
-        return this.exampleService.getItem(ctx, args.id);
+        return this.exampleService.findOne(ctx, args.id);
     }
 }

@@ -14,7 +14,7 @@ export class ExampleService {
         private listQueryBuilder: ListQueryBuilder,
     ) {}
 
-    async getAllItems(
+    async findAll(
         ctx: RequestContext,
         options?: ExampleListOptions,
     ): Promise<PaginatedList<ExampleEntity>> {
@@ -27,26 +27,17 @@ export class ExampleService {
             }));
     }
 
-    async getItem(ctx: RequestContext, id: string): Promise<ExampleEntity | undefined> {
+    async findOne(ctx: RequestContext, id: string): Promise<ExampleEntity | undefined> {
         return this.connection.getRepository(ctx, ExampleEntity).findOne(id);
     }
 
-    async addItem(ctx: RequestContext, args: CreateExampleInput): Promise<ExampleEntity> {
-        const repository = this.connection.getRepository(ctx, ExampleEntity);
-        const example = repository.create({ name: args.name });
-        await repository.save(example);
-
-        return example;
+    async create(ctx: RequestContext, input: CreateExampleInput): Promise<ExampleEntity> {
+        return this.connection.getRepository(ctx, ExampleEntity).save(new ExampleEntity(input));
     }
 
-    async updateItem(ctx: RequestContext, args: UpdateExampleInput): Promise<ExampleEntity | undefined> {
-        const repository = this.connection.getRepository(ctx, ExampleEntity);
-        const example = await repository.findOne({ id: args.id });
-
-        if (!example) return;
-        const updated = { ...example, ...args };
-        await repository.save(updated);
-
-        return updated;
+    async update(ctx: RequestContext, input: UpdateExampleInput): Promise<ExampleEntity> {
+        const example = await this.connection.getEntityOrThrow(ctx, ExampleEntity, input.id);
+        const updated = { ...example, ...input };
+        return this.connection.getRepository(ctx, ExampleEntity).save(updated);
     }
 }

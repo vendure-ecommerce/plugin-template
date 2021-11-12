@@ -13,7 +13,7 @@ export class ExampleAdminResolver {
     @Mutation()
     @Allow(Permission.SuperAdmin)
     createExample(@Ctx() ctx: RequestContext, @Args() args: MutationCreateExampleArgs): Promise<ExampleEntity> {
-        return this.exampleService.addItem(ctx, args.input);
+        return this.exampleService.create(ctx, args.input);
     }
 
     @Transaction()
@@ -23,6 +23,6 @@ export class ExampleAdminResolver {
         @Ctx() ctx: RequestContext,
         @Args() args: MutationUpdateExampleArgs,
     ): Promise<ExampleEntity | undefined> {
-        return this.exampleService.updateItem(ctx, args.input);
+        return this.exampleService.update(ctx, args.input);
     }
 }
