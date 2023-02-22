@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Plugin template",
   "author": "Martijn van de Brug <martijn@pinelab.studio>"
-  "repository": "https://github.com/vendure-ecommerce/plugin-template",
+  repository: "https://github.com/vendure-ecommerce/plugin-template",
   "license": "MIT",
   "private": false,
   "engines": {
