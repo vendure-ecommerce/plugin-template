@@ -29,6 +29,8 @@ Make sure you are logged in to NPM: https://docs.npmjs.com/cli/v9/commands/npm-l
 
 That's it!
 
+(Maybe share your accomplishments in the [Vendure slack](https://join.slack.com/t/vendure-ecommerce/shared_invite/zt-1exzio25w-vjL5TYkyJZjK52d6jkOsIA)?
+
 ## Next steps
 
 1. Check out https://www.vendure.io/docs/plugins/ to see the possibilities of a plugin
