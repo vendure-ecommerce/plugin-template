@@ -22,10 +22,9 @@ The shop GraphQL `http://localhost:3050/shop-api`. Here you can test your custom
 
 ## Publishing to NPM
 
-Make sure you are logged in to NPM: https://docs.npmjs.com/cli/v9/commands/npm-login
-
-1. `yarn build`
-2. `yarn publish`
+1. Make sure you are [logged in to NPM](https://docs.npmjs.com/cli/v9/commands/npm-login)
+2. `yarn build`
+3. `yarn publish`
 
 That's it!
 
@@ -33,5 +32,5 @@ That's it!
 
 ## Next steps
 
-1. Check out https://www.vendure.io/docs/plugins/ to see the possibilities of a plugin
-2. Check out GraphQL codegen to generate Typescript types for your custom GraphQL types: https://the-guild.dev/graphql/codegen
+1. Check out [the docs](https://www.vendure.io/docs/plugins/) to see the possibilities of a plugin
+2. Check out [GraphQL codegen](https://the-guild.dev/graphql/codegen) to generate Typescript types for your custom GraphQL types
