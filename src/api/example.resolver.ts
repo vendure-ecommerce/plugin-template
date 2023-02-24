@@ -1,24 +1,23 @@
-import { Args, Query, Resolver } from '@nestjs/graphql';
-import { Ctx, PaginatedList, RequestContext } from '@vendure/core';
-
-import { ExampleService } from '../service/example.service';
-import { ExampleEntity } from '../entities/example.entity';
-import { QueryExamplesArgs } from '../generated-admin-types';
+import { Inject} from '@nestjs/common';
+import { Resolver, Query} from '@nestjs/graphql';
+import { Permission, Allow, RequestContext, Ctx, Logger } from '@vendure/core';
+import { loggerCtx, PLUGIN_INIT_OPTIONS } from '../constants';
+import { ExampleOptions } from '../example.plugin';
 
 @Resolver()
 export class ExampleResolver {
-    constructor(private exampleService: ExampleService) {}
 
-    @Query()
-    examples(
-        @Ctx() ctx: RequestContext,
-        @Args() args: QueryExamplesArgs,
-    ): Promise<PaginatedList<ExampleEntity>> {
-        return this.exampleService.findAll(ctx, args.options || undefined);
-    }
+    constructor(
+        @Inject(PLUGIN_INIT_OPTIONS) private options: ExampleOptions,
+    ){}
 
-    @Query()
-    example(@Ctx() ctx: RequestContext, @Args() args: { id: string }): Promise<ExampleEntity | undefined> {
-        return this.exampleService.findOne(ctx, args.id);
-    }
+  @Query()
+  @Allow(Permission.Public)
+  async exampleQuery(
+    @Ctx() ctx: RequestContext,
+  ): Promise<string> {
+    Logger.info(`Initialezed ExamplePlugin`,loggerCtx)
+    return `Hello! Your example plugin is set to enabled=${this.options.enabled}`;
+  }
+
 }
