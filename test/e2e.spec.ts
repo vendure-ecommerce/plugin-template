@@ -11,7 +11,7 @@ import { ExamplePlugin } from '../src/example.plugin';
 import { initialData } from './initial-data';
 import path from 'path';
 
-describe('Limit variants per order plugin', function () {
+describe('Example plugin e2e', function () {
   let server: TestServer;
   let adminClient: SimpleGraphQLClient;
   let shopClient: SimpleGraphQLClient;

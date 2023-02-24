@@ -1,7 +1,8 @@
 import { PluginCommonModule, VendurePlugin } from "@vendure/core";
-import { gql } from "graphql-tag";
+import { shopSchema } from "./api/api-extensions";
+import { ExampleResolver } from "./api/example.resolver";
+
 import { PLUGIN_INIT_OPTIONS } from "./constants";
-import { ExampleResolver } from "./example.resolver";
 
 export interface ExampleOptions {
   enabled: boolean;
@@ -17,11 +18,7 @@ export interface ExampleOptions {
   ],
   shopApiExtensions: {
     resolvers: [ExampleResolver],
-    schema: gql`
-      extend type Query {
-        exampleQuery: String!
-      }
-    `,
+    schema: shopSchema,
   },
 })
 export class ExamplePlugin {
