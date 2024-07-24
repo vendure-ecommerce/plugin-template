@@ -2,7 +2,8 @@ import { Inject} from '@nestjs/common';
 import { Resolver, Query} from '@nestjs/graphql';
 import { Permission, Allow, RequestContext, Ctx, Logger } from '@vendure/core';
 import { loggerCtx, PLUGIN_INIT_OPTIONS } from '../constants';
-import { ExampleOptions } from '../example.plugin';
+
+import {ExampleOptions} from "../types";
 
 @Resolver()
 export class ExampleResolver {

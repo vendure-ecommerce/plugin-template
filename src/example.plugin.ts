@@ -1,13 +1,14 @@
-import { PluginCommonModule, VendurePlugin } from "@vendure/core";
-import { shopSchema } from "./api/api-extensions";
-import { ExampleResolver } from "./api/example.resolver";
+import {PluginCommonModule, VendurePlugin} from "@vendure/core";
+import {shopSchema} from "./api/api-extensions";
+import {ExampleResolver} from "./api/example.resolver";
 
-import { PLUGIN_INIT_OPTIONS } from "./constants";
+import {PLUGIN_INIT_OPTIONS} from "./constants";
+import {ExampleOptions} from "./types";
 
-export interface ExampleOptions {
-  enabled: boolean;
-}
-
+/**
+ * @description
+ * This is an example plugin that you can use as the basis for your own custom plugin.
+ */
 @VendurePlugin({
   imports: [PluginCommonModule],
   providers: [
@@ -15,7 +16,7 @@ export interface ExampleOptions {
       provide: PLUGIN_INIT_OPTIONS,
       useFactory: () => ExamplePlugin.options,
     },
-  ],
+],
   shopApiExtensions: {
     resolvers: [ExampleResolver],
     schema: shopSchema,
