@@ -13,25 +13,27 @@
   "types": "dist/index.d.ts",
   "files": [
     "dist",
-    "README.md"
+    "README.md",
+    "CHANGELOG.md"
   ],
   "scripts": {
-    "start": "yarn ts-node test/dev-server.ts",
+    "start": "ts-node test/dev-server.ts",
     "build": "rimraf dist && tsc",
-    "test": "jest --preset=\"ts-jest\""
+    "test": "vitest"
   },
   "devDependencies": {
-    "@types/jest": "29.4.0",
+    "@swc/core": "^1.7.1",
     "@vendure/admin-ui-plugin": "3.0.0",
     "@vendure/asset-server-plugin": "3.0.0",
     "@vendure/cli": "^3.0.0",
     "@vendure/core": "3.0.0",
     "@vendure/testing": "3.0.0",
     "@vendure/ui-devkit": "3.0.0",
-    "jest": "29.4.3",
+    "graphql-tag": "^2.12.6",
     "rimraf": "^6.0.1",
-    "ts-jest": "29.0.5",
     "ts-node": "10.9.2",
-    "typescript": "5.3.3"
+    "typescript": "5.3.3",
+    "unplugin-swc": "^1.5.1",
+    "vitest": "^2.0.4"
   }
 }
