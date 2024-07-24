@@ -1,9 +1,9 @@
-import {PluginCommonModule, VendurePlugin} from "@vendure/core";
-import {shopSchema} from "./api/api-extensions";
-import {ExampleResolver} from "./api/example.resolver";
+import { PluginCommonModule, VendurePlugin } from "@vendure/core";
+import { shopSchema } from "./api/api-extensions";
+import { ExampleResolver } from "./api/example.resolver";
 
-import {PLUGIN_INIT_OPTIONS} from "./constants";
-import {ExampleOptions} from "./types";
+import { PLUGIN_INIT_OPTIONS } from "./constants";
+import { ExampleOptions } from "./types";
 
 /**
  * @description
@@ -16,7 +16,7 @@ import {ExampleOptions} from "./types";
       provide: PLUGIN_INIT_OPTIONS,
       useFactory: () => ExamplePlugin.options,
     },
-],
+  ],
   shopApiExtensions: {
     resolvers: [ExampleResolver],
     schema: shopSchema,

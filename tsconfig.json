@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "lib": ["es2022"],
-    "module": "commonjs",
+    "module": "NodeNext",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "emitDecoratorMetadata": true,

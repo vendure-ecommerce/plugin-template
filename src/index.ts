@@ -7,5 +7,5 @@
  * - events
  * - custom strategies that can be configured by the user of the plugin
  */
-export * from './example.plugin';
-export {ExampleOptions} from "./types";
+export * from "./example.plugin";
+export { ExampleOptions } from "./types";
