@@ -2,9 +2,9 @@
 
 1. Copy this directory and rename to `vendure-plugin-YOUR-PLUGIN-NAME`
 2. Update the `name` and `description` field in `package.json`
-4. Update this Readme: What does the plugin do? How can someone use your plugin in their project?
-5. Run `npm install` to install the dependencies
-6. Run `npm run start` to start the server
+3. Update this Readme: What does the plugin do? How can someone use your plugin in their project?
+4. Run `npm install` to install the dependencies
+5. Run `npm run start` to start the server
 
 The admin is now available at `http://localhost:3050/admin`. Login with _superadmin/superadmin_
 
