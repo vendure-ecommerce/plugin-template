@@ -21,7 +21,14 @@
     "build": "rimraf dist && tsc",
     "test": "vitest"
   },
+  "workspaces": [
+    "packages/*"
+  ],
   "devDependencies": {
+    "@graphql-codegen/cli": "^5.0.2",
+    "@graphql-codegen/typed-document-node": "^5.0.9",
+    "@graphql-codegen/typescript": "^4.0.9",
+    "@graphql-codegen/typescript-operations": "^4.2.3",
     "@swc/core": "^1.7.1",
     "@vendure/admin-ui-plugin": "3.0.0",
     "@vendure/asset-server-plugin": "3.0.0",
@@ -29,7 +36,11 @@
     "@vendure/core": "3.0.0",
     "@vendure/testing": "3.0.0",
     "@vendure/ui-devkit": "3.0.0",
+    "better-sqlite3": "^9.6.0",
+    "dotenv": "^16.4.5",
+    "fs-extra": "^11.2.0",
     "graphql-tag": "^2.12.6",
+    "lerna": "^8.1.8",
     "prettier": "3.3.3",
     "rimraf": "^6.0.1",
     "ts-node": "10.9.2",

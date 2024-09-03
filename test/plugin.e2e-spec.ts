@@ -10,7 +10,7 @@ import { TestServer } from "@vendure/testing/lib/test-server";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import path from "path";
 
-import { ExamplePlugin } from "../src/example.plugin";
+import { ExamplePlugin } from "../packages/example-plugin/src/example.plugin";
 import { initialData } from "./initial-data";
 
 describe("Example plugin e2e", function () {

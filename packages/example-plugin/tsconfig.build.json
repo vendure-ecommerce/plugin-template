@@ -1,0 +1,16 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "strictNullChecks": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "outDir": "./dist",
+    "declaration": true
+  },
+  "files": [
+    "./src/index.ts"
+  ],
+  "exclude": [
+    "../../node_modules/typesense/src/**/*"
+  ]
+}

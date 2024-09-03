@@ -13,7 +13,7 @@ import {
 import { AdminUiPlugin } from "@vendure/admin-ui-plugin";
 import { AssetServerPlugin } from "@vendure/asset-server-plugin";
 import path from "path";
-import { ExamplePlugin } from "../src";
+import { ExamplePlugin } from "../packages/example-plugin/src";
 import { initialData } from "./initial-data";
 
 require("dotenv").config();

@@ -1,0 +1,26 @@
+{
+    "name": "@my-org/my-example-plugin",
+    "description": "An example plugin for Vendure",
+    "version": "0.0.1",
+    "publishConfig": {
+        "access": "public"
+    },
+    "files": [
+        "dist/**/*",
+        "CHANGELOG.md",
+        "docs"
+    ],
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "scripts": {
+        "dev": "ts-node dev-server/index.ts",
+        "watch": "tsc -p ./tsconfig.build.json --watch",
+        "build": "rimraf lib && tsc -p ./tsconfig.build.json && ts-node copy-ui-src.ts",
+        "test": "vitest --watch=false",
+        "lint": "eslint --fix .",
+        "serve": "node dist/index.js",
+        "codegen": "ts-node generate-types.ts",
+        "e2e": "cross-env PACKAGE=advanced-search-plugin vitest -c ../../e2e-common/vitest.config.mts"
+    },
+    "dependencies": {}
+}

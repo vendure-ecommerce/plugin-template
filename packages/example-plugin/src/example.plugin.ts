@@ -1,9 +1,12 @@
 import { PluginCommonModule, VendurePlugin } from "@vendure/core";
-import { shopSchema } from "./api/api-extensions";
-import { ExampleResolver } from "./api/example.resolver";
+import {exampleEntityAdminApiExtensions, shopSchema} from "./api/api-extensions";
+import { ExampleShopResolver } from "./api/example-shop.resolver";
 
-import { PLUGIN_INIT_OPTIONS } from "./constants";
+import {examplePermission, PLUGIN_INIT_OPTIONS} from "./constants";
 import { ExampleOptions } from "./types";
+import { ExampleEntity } from "./entities/example.entity";
+import { ExampleEntityService } from "./services/example-entity.service";
+import { ExampleAdminResolver } from "./api/example-admin.resolver";
 
 /**
  * This is an example plugin that you can use as the basis for your own custom plugin.
@@ -17,11 +20,21 @@ import { ExampleOptions } from "./types";
       provide: PLUGIN_INIT_OPTIONS,
       useFactory: () => ExamplePlugin.options,
     },
+    ExampleEntityService,
   ],
   shopApiExtensions: {
-    resolvers: [ExampleResolver],
+    resolvers: [ExampleShopResolver],
     schema: shopSchema,
   },
+  adminApiExtensions: {
+    resolvers: [ExampleAdminResolver],
+    schema: exampleEntityAdminApiExtensions,
+  },
+  entities: [ExampleEntity],
+  configuration: config => {
+    config.authOptions.customPermissions.push(examplePermission);
+    return config;
+  }
 })
 export class ExamplePlugin {
   /** @internal */

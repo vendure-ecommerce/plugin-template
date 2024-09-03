@@ -15,5 +15,7 @@
     "strictPropertyInitialization": false,
     "outDir": "dist",
   },
-  "include": ["src/"],
+  "include": [
+    "packages/example-plugin/src/"
+  ],
 }

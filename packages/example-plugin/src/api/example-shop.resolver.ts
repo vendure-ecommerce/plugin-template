@@ -6,7 +6,7 @@ import { loggerCtx, PLUGIN_INIT_OPTIONS } from "../constants";
 import { ExampleOptions } from "../types";
 
 @Resolver()
-export class ExampleResolver {
+export class ExampleShopResolver {
   constructor(@Inject(PLUGIN_INIT_OPTIONS) private options: ExampleOptions) {}
 
   @Query()

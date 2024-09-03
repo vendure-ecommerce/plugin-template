@@ -1,0 +1,3 @@
+node_modules/
+dist/
+src/e2e/__data__/
