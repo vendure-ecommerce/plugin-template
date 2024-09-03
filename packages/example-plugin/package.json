@@ -1,5 +1,5 @@
 {
-    "name": "@my-org/my-example-plugin",
+    "name": "@my-org/example-plugin",
     "description": "An example plugin for Vendure",
     "version": "0.0.1",
     "license": "GPL-3.0-or-later",

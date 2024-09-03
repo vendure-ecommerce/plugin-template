@@ -1,8 +1,7 @@
 {
-  "name": "@your-org/vendure-plugin-template",
+  "name": "@your-org/vendure-plugins",
   "version": "1.0.0",
   "description": "Plugin template",
-  "author": "Martijn van de Brug <martijn@pinelab.studio>",
   "repository": "https://github.com/vendure-ecommerce/plugin-template",
   "license": "GPL-3.0-or-later",
   "private": false,
@@ -16,11 +15,7 @@
     "README.md",
     "CHANGELOG.md"
   ],
-  "scripts": {
-    "start": "ts-node test/dev-server.ts",
-    "build": "rimraf dist && tsc",
-    "test": "vitest"
-  },
+  "scripts": {},
   "workspaces": [
     "packages/*"
   ],
