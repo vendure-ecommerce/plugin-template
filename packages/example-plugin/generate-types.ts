@@ -14,7 +14,7 @@ generateTypes(
   },
   {
     pluginDir: __dirname,
-    e2e: false,
+    e2e: true,
     ui: false,
   },
 ).then(() => process.exit(0));

@@ -34,7 +34,8 @@ import { ExampleAdminResolver } from "./api/example-admin.resolver";
   configuration: config => {
     config.authOptions.customPermissions.push(examplePermission);
     return config;
-  }
+  },
+  compatibility: '>=3.0.0'
 })
 export class ExamplePlugin {
   /** @internal */

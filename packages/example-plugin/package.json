@@ -14,13 +14,9 @@
     "types": "./dist/index.d.ts",
     "scripts": {
         "dev": "ts-node dev-server/index.ts",
-        "watch": "tsc -p ./tsconfig.build.json --watch",
-        "build": "rimraf lib && tsc -p ./tsconfig.build.json && ts-node copy-ui-src.ts",
-        "test": "vitest --watch=false",
-        "lint": "eslint --fix .",
-        "serve": "node dist/index.js",
         "codegen": "ts-node generate-types.ts",
-        "e2e": "cross-env PACKAGE=advanced-search-plugin vitest -c ../../e2e-common/vitest.config.mts"
+        "build": "rimraf lib && tsc -p ./tsconfig.build.json && ts-node copy-ui-src.ts",
+        "e2e": "cross-env PACKAGE=example-plugin vitest -c ../../utils/e2e/vitest.config.mts"
     },
     "dependencies": {}
 }

@@ -1,3 +1,4 @@
+import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core';
 export type Maybe<T> = T;
 export type InputMaybe<T> = T;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -6667,3 +6668,13 @@ export type ZoneSortParameter = {
   name?: InputMaybe<SortOrder>;
   updatedAt?: InputMaybe<SortOrder>;
 };
+
+export type GetExampleEntityListQueryVariables = Exact<{
+  options?: InputMaybe<ExampleEntityListOptions>;
+}>;
+
+
+export type GetExampleEntityListQuery = { __typename?: 'Query', exampleEntities: { __typename?: 'ExampleEntityList', totalItems: number, items: Array<{ __typename?: 'ExampleEntity', id: string, code: string }> } };
+
+
+export const GetExampleEntityListDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetExampleEntityList"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"options"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"ExampleEntityListOptions"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"exampleEntities"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"options"},"value":{"kind":"Variable","name":{"kind":"Name","value":"options"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"items"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"code"}}]}},{"kind":"Field","name":{"kind":"Name","value":"totalItems"}}]}}]}}]} as unknown as DocumentNode<GetExampleEntityListQuery, GetExampleEntityListQueryVariables>;

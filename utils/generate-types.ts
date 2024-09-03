@@ -98,13 +98,13 @@ export async function generateTypes(
         tasks.push(
             generateTypes(
                 'admin',
-                'src/e2e/types/generated-admin-types.ts',
-                path.join(options.pluginDir, 'src/e2e/graphql/admin-e2e-definitions.graphql.ts'),
+                'e2e/types/generated-admin-types.ts',
+                path.join(options.pluginDir, 'e2e/graphql/admin-e2e-definitions.ts'),
             ),
             generateTypes(
                 'shop',
-                'src/e2e/types/generated-shop-types.ts',
-                path.join(options.pluginDir, 'src/e2e/graphql/shop-e2e-definitions.graphql.ts'),
+                'e2e/types/generated-shop-types.ts',
+                path.join(options.pluginDir, 'e2e/graphql/shop-e2e-definitions.ts'),
             ),
         );
     }
