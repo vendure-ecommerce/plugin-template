@@ -7,6 +7,7 @@ import { ExampleOptions } from "./types";
 import { ExampleEntity } from "./entities/example.entity";
 import { ExampleEntityService } from "./services/example-entity.service";
 import { ExampleAdminResolver } from "./api/example-admin.resolver";
+import {ui} from "./ui";
 
 /**
  * This is an example plugin that you can use as the basis for your own custom plugin.
@@ -40,6 +41,8 @@ import { ExampleAdminResolver } from "./api/example-admin.resolver";
 export class ExamplePlugin {
   /** @internal */
   static options: ExampleOptions;
+
+  static uiExtensions = ui;
 
   /**
    * The static `init()` method is called with the options to

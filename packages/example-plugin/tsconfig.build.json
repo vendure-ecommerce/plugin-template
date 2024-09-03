@@ -11,6 +11,6 @@
     "./src/index.ts"
   ],
   "exclude": [
-    "../../node_modules/typesense/src/**/*"
+    "./src/ui/**/*"
   ]
 }
