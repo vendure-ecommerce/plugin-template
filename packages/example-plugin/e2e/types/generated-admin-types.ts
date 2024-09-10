@@ -8,7 +8,7 @@ export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> =
 export type Incremental<T> = T | { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: { input: string; output: string; }
+  ID: { input: string | number; output: string | number; }
   String: { input: string; output: string; }
   Boolean: { input: boolean; output: boolean; }
   Int: { input: number; output: number; }
@@ -6674,7 +6674,7 @@ export type GetExampleEntityListQueryVariables = Exact<{
 }>;
 
 
-export type GetExampleEntityListQuery = { __typename?: 'Query', exampleEntities: { __typename?: 'ExampleEntityList', totalItems: number, items: Array<{ __typename?: 'ExampleEntity', id: string, code: string }> } };
+export type GetExampleEntityListQuery = { __typename?: 'Query', exampleEntities: { __typename?: 'ExampleEntityList', totalItems: number, items: Array<{ __typename?: 'ExampleEntity', id: string | number, code: string }> } };
 
 
 export const GetExampleEntityListDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetExampleEntityList"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"options"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"ExampleEntityListOptions"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"exampleEntities"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"options"},"value":{"kind":"Variable","name":{"kind":"Name","value":"options"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"items"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"code"}}]}},{"kind":"Field","name":{"kind":"Name","value":"totalItems"}}]}}]}}]} as unknown as DocumentNode<GetExampleEntityListQuery, GetExampleEntityListQueryVariables>;
