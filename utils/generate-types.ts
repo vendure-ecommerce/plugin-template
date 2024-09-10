@@ -59,6 +59,7 @@ export async function generateTypes(
             enumValues: 'keep',
         },
         scalars: {
+            ID: 'string | number',
             Money: 'number',
         },
     };
