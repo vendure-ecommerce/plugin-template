@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Plugin template",
   "repository": "https://github.com/vendure-ecommerce/plugin-template",
-  "license": "GPL-3.0-or-later",
+  "license": "MIT",
   "private": false,
   "engines": {
     "node": ">=20.0.0"
