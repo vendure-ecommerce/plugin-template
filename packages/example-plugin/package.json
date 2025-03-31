@@ -16,7 +16,7 @@
     "scripts": {
         "dev": "ts-node dev-server/index.ts",
         "codegen": "ts-node generate-types.ts",
-        "build": "rimraf lib && tsc -p ./tsconfig.build.json && ts-node copy-ui-src.ts",
+        "build": "rimraf dist && tsc -p ./tsconfig.build.json && ts-node copy-ui-src.ts",
         "e2e": "cross-env PACKAGE=example-plugin vitest -c ../../utils/e2e/vitest.config.mts"
     },
     "dependencies": {}
